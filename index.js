@@ -1,30 +1,65 @@
-// L853. Car Fleet
-const carFleet = function (target, position, speed) {
-  const cars = [];
-  for (let i = 0; i < position.length; i++) {
-    cars.push({ p: position[i], s: speed[i] });
-  }
-  cars.sort((a, b) => b.p - a.p);
+// L84. Largest Rectangle in Histogram
+const largestRectangleArea = function (heights) {
+  const stack = [{ h: heights[0], i: 0 }];
+  let maxArea = 0;
+  for (let i = 1; i < heights.length; i++) {
+    const h = heights[i];
+    let lastStackElem = stack[stack.length - 1];
 
-  const stack = [cars[0]];
-  for (let i = 1; i < cars.length; i++) {
-    const currentCar = cars[i];
-    const lastStackElem = stack[stack.length - 1];
-    const timeForLSE = (target - lastStackElem.p) / lastStackElem.s;
-
-    const timeForCC = (target - currentCar.p) / currentCar.s;
-
-    if (timeForLSE >= timeForCC) {
+    if (!stack.length || lastStackElem?.h <= h) {
+      stack.push({ h, i });
       continue;
     }
+    let s;
 
-    stack.push(currentCar);
+    while (lastStackElem?.h > h) {
+      s = stack.pop();
+      const area = (i - s.i) * s.h;
+
+      maxArea = Math.max(maxArea, area);
+      lastStackElem = stack[stack.length - 1];
+    }
+    stack.push({ h, i: s.i });
   }
 
-  return stack.length;
+  for (let j = 0; j < stack.length; j++) {
+    const { h, i } = stack[j];
+    const area = h * (heights.length - i);
+    maxArea = Math.max(maxArea, area);
+  }
+
+  return maxArea;
 };
 
-console.log(carFleet(12, [10, 8, 0, 5, 3], [2, 4, 1, 1, 3]));
+console.log(largestRectangleArea([5, 5, 1, 7, 1, 1, 5, 2, 7, 6]));
+
+// // L853. Car Fleet
+// const carFleet = function (target, position, speed) {
+//   const cars = [];
+//   for (let i = 0; i < position.length; i++) {
+//     cars.push({ p: position[i], s: speed[i] });
+//   }
+//   cars.sort((a, b) => b.p - a.p);
+
+//   const stack = [cars[0]];
+//   for (let i = 1; i < cars.length; i++) {
+//     const currentCar = cars[i];
+//     const lastStackElem = stack[stack.length - 1];
+//     const timeForLSE = (target - lastStackElem.p) / lastStackElem.s;
+
+//     const timeForCC = (target - currentCar.p) / currentCar.s;
+
+//     if (timeForLSE >= timeForCC) {
+//       continue;
+//     }
+
+//     stack.push(currentCar);
+//   }
+
+//   return stack.length;
+// };
+
+// console.log(carFleet(12, [10, 8, 0, 5, 3], [2, 4, 1, 1, 3]));
 
 // //L739. Daily Temperatures
 
