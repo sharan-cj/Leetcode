@@ -1,37 +1,60 @@
-// L84. Largest Rectangle in Histogram
-const largestRectangleArea = function (heights) {
-  const stack = [{ h: heights[0], i: 0 }];
-  let maxArea = 0;
-  for (let i = 1; i < heights.length; i++) {
-    const h = heights[i];
-    let lastStackElem = stack[stack.length - 1];
+// L704. Binary Search
+const search = function (nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
 
-    if (!stack.length || lastStackElem?.h <= h) {
-      stack.push({ h, i });
-      continue;
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+    if (target === nums[mid]) {
+      return mid;
     }
-    let s;
 
-    while (lastStackElem?.h > h) {
-      s = stack.pop();
-      const area = (i - s.i) * s.h;
-
-      maxArea = Math.max(maxArea, area);
-      lastStackElem = stack[stack.length - 1];
+    if (nums[mid] > target) {
+      right = mid - 1;
+    } else {
+      left = mid + 1;
     }
-    stack.push({ h, i: s.i });
   }
 
-  for (let j = 0; j < stack.length; j++) {
-    const { h, i } = stack[j];
-    const area = h * (heights.length - i);
-    maxArea = Math.max(maxArea, area);
-  }
-
-  return maxArea;
+  return -1;
 };
 
-console.log(largestRectangleArea([5, 5, 1, 7, 1, 1, 5, 2, 7, 6]));
+console.log(search([-1, 0, 3, 5, 9, 12], 9));
+
+// // L84. Largest Rectangle in Histogram
+// const largestRectangleArea = function (heights) {
+//   const stack = [{ h: heights[0], i: 0 }];
+//   let maxArea = 0;
+//   for (let i = 1; i < heights.length; i++) {
+//     const h = heights[i];
+//     let lastStackElem = stack[stack.length - 1];
+
+//     if (!stack.length || lastStackElem?.h <= h) {
+//       stack.push({ h, i });
+//       continue;
+//     }
+//     let s;
+
+//     while (lastStackElem?.h > h) {
+//       s = stack.pop();
+//       const area = (i - s.i) * s.h;
+
+//       maxArea = Math.max(maxArea, area);
+//       lastStackElem = stack[stack.length - 1];
+//     }
+//     stack.push({ h, i: s.i });
+//   }
+
+//   for (let j = 0; j < stack.length; j++) {
+//     const { h, i } = stack[j];
+//     const area = h * (heights.length - i);
+//     maxArea = Math.max(maxArea, area);
+//   }
+
+//   return maxArea;
+// };
+
+// console.log(largestRectangleArea([5, 5, 1, 7, 1, 1, 5, 2, 7, 6]));
 
 // // L853. Car Fleet
 // const carFleet = function (target, position, speed) {
