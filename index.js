@@ -1,26 +1,3 @@
-// // L704. Binary Search
-// const search = function (nums, target) {
-//   let left = 0;
-//   let right = nums.length - 1;
-
-//   while (left < right) {
-//     const mid = Math.floor((left + right) / 2);
-//     if (target === nums[mid]) {
-//       return mid;
-//     }
-
-//     if (nums[mid] > target) {
-//       right = mid - 1;
-//     } else {
-//       left = mid + 1;
-//     }
-//   }
-
-//   return -1;
-// };
-
-// console.log(search([-1, 0, 3, 5, 9, 12], 9));
-
 // // L84. Largest Rectangle in Histogram
 // const largestRectangleArea = function (heights) {
 //   const stack = [{ h: heights[0], i: 0 }];
