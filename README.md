@@ -1,13 +1,14 @@
 ### Binary Search
 
-- 153. Find Minimum in Rotated Sorted Array
-- 875. Koko Eating Bananas
+- 33. Search in Rotated Sorted Array
+- 153.  Find Minimum in Rotated Sorted Array
+- 875.  Koko Eating Bananas
 - 74. Search a 2D Matrix
-- 13. Roman to Integer
+- 704.  Binary Search
 
 ### Random - EASY
 
-- 704. Binary Search
+- 13. Roman to Integer
 
 ### Stack
 
