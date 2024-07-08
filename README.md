@@ -8,6 +8,7 @@
 
 ### Random - EASY
 
+- 27. Remove Element
 - 13. Roman to Integer
 
 ### Stack
