@@ -1,15 +1,37 @@
-var removeElement = function (nums, val) {
-  const arr = [];
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== val) {
-      arr.push(nums[i]);
-    }
-  }
+// 70. Climbing Stairs
 
-  return arr;
+var climbStairs = function (n) {
+  const map = new Map();
+  const recursion = (num) => {
+    if (map.has(num)) {
+      return map.get(num);
+    }
+    if (num <= 2) {
+      return num;
+    }
+    const k = recursion(num - 1) + recursion(num - 2);
+    map.set(num, k);
+    return k;
+  };
+
+  return recursion(n);
 };
 
-console.log(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2));
+console.log(climbStairs(44));
+
+// //27. Remove Element
+// var removeElement = function (nums, val) {
+//   const arr = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] !== val) {
+//       arr.push(nums[i]);
+//     }
+//   }
+
+//   return arr;
+// };
+
+// console.log(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2));
 // var removeDuplicates = function (nums) {
 //   const set = new Set();
 //   const arr = [];
