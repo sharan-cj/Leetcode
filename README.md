@@ -1,5 +1,6 @@
 ### Sliding Window
 
+- 3. Longest Substring Without Repeating Characters
 - 121. Best Time to Buy and Sell Stock
 
 ### Binary Search
