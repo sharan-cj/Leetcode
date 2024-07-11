@@ -1,22 +1,48 @@
-// 3. Longest Substring Without Repeating Characters
-var lengthOfLongestSubstring = function (s) {
-  if (s === "") return 0;
-  let ssCharIndex = 0;
-  let maxLen = 0;
-  let obj = {};
+// 424. Longest Repeating Character Replacement
+var characterReplacement = function (s, k) {
+  let left = 0;
+  const obj = {};
+  let max = 0;
+
   for (let i = 0; i < s.length; i++) {
+    const window = i - left + 1;
     const curr = s[i];
-    if (obj[curr] >= ssCharIndex) {
-      ssCharIndex = obj[curr] + 1;
+
+    obj[curr] = (obj[curr] ?? 0) + 1;
+    const maxFreq = Math.max(...Object.values(obj));
+
+    if (window - maxFreq <= k) {
+      max = Math.max(max, window);
+    } else {
+      obj[s[left]] = obj[s[left]] - 1;
+      left++;
     }
-    maxLen = Math.max(maxLen, i - ssCharIndex + 1);
-    obj[curr] = i;
   }
 
-  return maxLen;
+  return max;
 };
 
-console.log(lengthOfLongestSubstring("abcabcbb"));
+console.log(characterReplacement("AABABBA", 1));
+
+// // 3. Longest Substring Without Repeating Characters
+// var lengthOfLongestSubstring = function (s) {
+//   if (s === "") return 0;
+//   let ssCharIndex = 0;
+//   let maxLen = 0;
+//   let obj = {};
+//   for (let i = 0; i < s.length; i++) {
+//     const curr = s[i];
+//     if (obj[curr] >= ssCharIndex) {
+//       ssCharIndex = obj[curr] + 1;
+//     }
+//     maxLen = Math.max(maxLen, i - ssCharIndex + 1);
+//     obj[curr] = i;
+//   }
+
+//   return maxLen;
+// };
+
+// console.log(lengthOfLongestSubstring("abcabcbb"));
 
 // // 121. Best Time to Buy and Sell Stock
 
