@@ -1,28 +1,79 @@
-// 424. Longest Repeating Character Replacement
-var characterReplacement = function (s, k) {
-  let left = 0;
-  const obj = {};
-  let max = 0;
+// 567. Permutation in String
 
-  for (let i = 0; i < s.length; i++) {
-    const window = i - left + 1;
-    const curr = s[i];
+var checkInclusion = function (s1, s2) {
+  if (s1.length > s2.length) return false;
 
-    obj[curr] = (obj[curr] ?? 0) + 1;
-    const maxFreq = Math.max(...Object.values(obj));
+  const s1Map = new Array(26).fill(0);
+  const s2Map = new Array(26).fill(0);
+  let matching = 0;
 
-    if (window - maxFreq <= k) {
-      max = Math.max(max, window);
-    } else {
-      obj[s[left]] = obj[s[left]] - 1;
-      left++;
+  const charIndexStart = "a".charCodeAt(0);
+  for (let i = 0; i < s1.length; i++) {
+    const s1MapIndex = s1.charCodeAt(i) - charIndexStart;
+    const s2MapIndex = s2.charCodeAt(i) - charIndexStart;
+    s1Map[s1MapIndex] = s1Map[s1MapIndex] + 1;
+    s2Map[s2MapIndex] = s2Map[s2MapIndex] + 1;
+  }
+
+  for (let i = 0; i < 26; i++) {
+    if (s1Map[i] === s2Map[i]) {
+      matching++;
     }
   }
 
-  return max;
+  let left = 0;
+  for (let i = s1.length; i < s2.length; i++) {
+    if (matching === 26) return true;
+    const mapIndex = s2.charCodeAt(i) - charIndexStart;
+    s2Map[mapIndex] += 1;
+    if (s1Map[mapIndex] === s2Map[mapIndex]) {
+      matching++;
+    } else if (s1Map[mapIndex] + 1 === s2Map[mapIndex]) {
+      matching--;
+    }
+
+    const leftMapIndex = s2.charCodeAt(left) - charIndexStart;
+    s2Map[leftMapIndex] -= 1;
+
+    if (s1Map[leftMapIndex] === s2Map[leftMapIndex]) {
+      matching++;
+    } else if (s1Map[leftMapIndex] - 1 === s2Map[leftMapIndex]) {
+      matching--;
+    }
+
+    left++;
+  }
+
+  return matching === 26;
 };
 
-console.log(characterReplacement("AABABBA", 1));
+console.log(checkInclusion("ao", "eidbaooo"));
+
+// // 424. Longest Repeating Character Replacement
+// var characterReplacement = function (s, k) {
+//   let left = 0;
+//   const obj = {};
+//   let max = 0;
+
+//   for (let i = 0; i < s.length; i++) {
+//     const window = i - left + 1;
+//     const curr = s[i];
+
+//     obj[curr] = (obj[curr] ?? 0) + 1;
+//     const maxFreq = Math.max(...Object.values(obj));
+
+//     if (window - maxFreq <= k) {
+//       max = Math.max(max, window);
+//     } else {
+//       obj[s[left]] = obj[s[left]] - 1;
+//       left++;
+//     }
+//   }
+
+//   return max;
+// };
+
+// console.log(characterReplacement("AABABBA", 1));
 
 // // 3. Longest Substring Without Repeating Characters
 // var lengthOfLongestSubstring = function (s) {
