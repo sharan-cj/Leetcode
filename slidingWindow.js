@@ -1,53 +1,102 @@
-// 567. Permutation in String
+// 76. Minimum Window Substring
+var minWindow = function (s, t) {
+  if (t.length > s.length) return "";
 
-var checkInclusion = function (s1, s2) {
-  if (s1.length > s2.length) return false;
+  const sMap = new Map();
+  const tMap = new Map();
 
-  const s1Map = new Array(26).fill(0);
-  const s2Map = new Array(26).fill(0);
-  let matching = 0;
-
-  const charIndexStart = "a".charCodeAt(0);
-  for (let i = 0; i < s1.length; i++) {
-    const s1MapIndex = s1.charCodeAt(i) - charIndexStart;
-    const s2MapIndex = s2.charCodeAt(i) - charIndexStart;
-    s1Map[s1MapIndex] = s1Map[s1MapIndex] + 1;
-    s2Map[s2MapIndex] = s2Map[s2MapIndex] + 1;
-  }
-
-  for (let i = 0; i < 26; i++) {
-    if (s1Map[i] === s2Map[i]) {
-      matching++;
-    }
+  for (let i = 0; i < t.length; i++) {
+    const count = tMap.get(t[i]) ?? 0;
+    tMap.set(t[i], count + 1);
   }
 
   let left = 0;
-  for (let i = s1.length; i < s2.length; i++) {
-    if (matching === 26) return true;
-    const mapIndex = s2.charCodeAt(i) - charIndexStart;
-    s2Map[mapIndex] += 1;
-    if (s1Map[mapIndex] === s2Map[mapIndex]) {
+  let subString = "";
+  let matching = 0;
+  const reqMatch = tMap.size;
+  for (let right = 0; right < s.length; right++) {
+    const curr = s[right];
+
+    const sMapCount = (sMap.get(curr) ?? 0) + 1;
+    sMap.set(curr, sMapCount);
+
+    const tMapCount = tMap.get(curr);
+
+    if (tMapCount && sMapCount === tMapCount) {
       matching++;
-    } else if (s1Map[mapIndex] + 1 === s2Map[mapIndex]) {
-      matching--;
     }
+    while (matching === reqMatch) {
+      const str = s.slice(left, right + 1);
+      if (!subString || str.length < subString.length) {
+        subString = str;
+      }
 
-    const leftMapIndex = s2.charCodeAt(left) - charIndexStart;
-    s2Map[leftMapIndex] -= 1;
-
-    if (s1Map[leftMapIndex] === s2Map[leftMapIndex]) {
-      matching++;
-    } else if (s1Map[leftMapIndex] - 1 === s2Map[leftMapIndex]) {
-      matching--;
+      const curr = s[left];
+      const sMapCount = sMap.get(curr) - 1;
+      const tMapCount = tMap.get(curr);
+      sMap.set(curr, sMapCount);
+      if (tMapCount && tMapCount > sMapCount) {
+        matching--;
+      }
+      left++;
     }
-
-    left++;
   }
 
-  return matching === 26;
+  return subString;
 };
 
-console.log(checkInclusion("ao", "eidbaooo"));
+console.log(minWindow("aa", "aa"));
+
+// // 567. Permutation in String
+
+// var checkInclusion = function (s1, s2) {
+//   if (s1.length > s2.length) return false;
+
+//   const s1Map = new Array(26).fill(0);
+//   const s2Map = new Array(26).fill(0);
+//   let matching = 0;
+
+//   const charIndexStart = "a".charCodeAt(0);
+//   for (let i = 0; i < s1.length; i++) {
+//     const s1MapIndex = s1.charCodeAt(i) - charIndexStart;
+//     const s2MapIndex = s2.charCodeAt(i) - charIndexStart;
+//     s1Map[s1MapIndex] = s1Map[s1MapIndex] + 1;
+//     s2Map[s2MapIndex] = s2Map[s2MapIndex] + 1;
+//   }
+
+//   for (let i = 0; i < 26; i++) {
+//     if (s1Map[i] === s2Map[i]) {
+//       matching++;
+//     }
+//   }
+
+//   let left = 0;
+//   for (let i = s1.length; i < s2.length; i++) {
+//     if (matching === 26) return true;
+//     const mapIndex = s2.charCodeAt(i) - charIndexStart;
+//     s2Map[mapIndex] += 1;
+//     if (s1Map[mapIndex] === s2Map[mapIndex]) {
+//       matching++;
+//     } else if (s1Map[mapIndex] + 1 === s2Map[mapIndex]) {
+//       matching--;
+//     }
+
+//     const leftMapIndex = s2.charCodeAt(left) - charIndexStart;
+//     s2Map[leftMapIndex] -= 1;
+
+//     if (s1Map[leftMapIndex] === s2Map[leftMapIndex]) {
+//       matching++;
+//     } else if (s1Map[leftMapIndex] - 1 === s2Map[leftMapIndex]) {
+//       matching--;
+//     }
+
+//     left++;
+//   }
+
+//   return matching === 26;
+// };
+
+// console.log(checkInclusion("ao", "eidbaooo"));
 
 // // 424. Longest Repeating Character Replacement
 // var characterReplacement = function (s, k) {
