@@ -1,27 +1,56 @@
-var plusOne = function (digits) {
-  let i = digits.length - 1;
+// 28. Find the Index of the First Occurrence in a String
+var strStr = function (haystack, needle) {
+  let index = -1;
+  for (let i = 0; i < haystack.length; i++) {
+    const curr = haystack[i];
 
-  let carry = 1;
-  while (i >= 0) {
-    const digit = digits[i] + carry;
-    if (digit >= 10) {
-      digits[i] = 0;
-      i--;
-      carry = Math.floor(digit / 10);
-    } else {
-      digits[i] = digit;
-      carry = 0;
-      break;
+    if (curr === needle[0]) {
+      let j = 1;
+      let matching = true;
+      while (j < needle.length) {
+        if (haystack[i + j] !== needle[j]) {
+          matching = false;
+          break;
+        }
+        j++;
+      }
+      if (matching) {
+        index = i;
+        break;
+      }
     }
   }
-  if (carry) {
-    digits.unshift(carry);
-  }
 
-  return digits;
+  return index;
 };
 
-console.log(plusOne([9]));
+console.log(strStr("sadbutsad", "sad"));
+console.log(strStr("leetcode", "leeto"));
+
+// var plusOne = function (digits) {
+//   let i = digits.length - 1;
+
+//   let carry = 1;
+//   while (i >= 0) {
+//     const digit = digits[i] + carry;
+//     if (digit >= 10) {
+//       digits[i] = 0;
+//       i--;
+//       carry = Math.floor(digit / 10);
+//     } else {
+//       digits[i] = digit;
+//       carry = 0;
+//       break;
+//     }
+//   }
+//   if (carry) {
+//     digits.unshift(carry);
+//   }
+
+//   return digits;
+// };
+
+// console.log(plusOne([9]));
 // var plusOne = function (digits) {
 //   let sum = 0;
 //   for (let i = 0; i < digits.length; i++) {

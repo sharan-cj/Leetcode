@@ -16,6 +16,7 @@
 
 ### Random - EASY
 
+- 28. Find the Index of the First Occurrence in a String
 - 66. Plus One
 - 70. Climbing Stairs
 - 27. Remove Element
