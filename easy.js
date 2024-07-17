@@ -1,3 +1,51 @@
+// 67. Add Binary
+
+var addBinary = function (a, b) {
+  if (b.length > a.length) {
+    return addBinary(b, a);
+  }
+
+  let carry = 0;
+  let arr = [];
+
+  let bArr = new Array(a.length - b.length).fill("0").join("");
+  bArr = bArr + b;
+
+  for (let i = a.length - 1; i >= 0; i--) {
+    const aVal = Number(a[i]);
+    const bVal = Number(bArr[i]);
+    const sum = aVal + bVal + carry;
+    switch (sum) {
+      case 0:
+        carry = 0;
+        arr.push(0);
+        break;
+      case 1:
+        carry = 0;
+        arr.push(1);
+        break;
+      case 2:
+        carry = 1;
+        arr.push(0);
+        break;
+      case 3:
+        carry = 1;
+        arr.push(1);
+        break;
+
+      default:
+        break;
+    }
+  }
+  if (carry) {
+    arr.push(carry);
+  }
+
+  return arr.reverse().join("");
+};
+
+console.log(addBinary("100", "110010"));
+// console.log(addBinary("100", "110010"));
 // // 27. Remove Element
 
 // var removeElement = function (nums, val) {

@@ -16,6 +16,7 @@
 
 ### Random - EASY
 
+- 67. Add Binary
 - 27. Remove Element
 - 28. Find the Index of the First Occurrence in a String
 - 66. Plus One
