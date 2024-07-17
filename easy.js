@@ -4,8 +4,8 @@ var mySqrt = function (x) {
   let l = 1;
   let r = x;
 
-  let ans;
-  while (l < r) {
+  let ans = 0;
+  while (l <= r) {
     mid = Math.floor((l + r) / 2);
     if (mid * mid > x) {
       r = mid - 1;
