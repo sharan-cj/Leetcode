@@ -1,23 +1,43 @@
-// 69. Sqrt(x)
+// 58. Length of Last Word
 
-var mySqrt = function (x) {
-  let l = 1;
-  let r = x;
-
-  let ans = 0;
-  while (l <= r) {
-    mid = Math.floor((l + r) / 2);
-    if (mid * mid > x) {
-      r = mid - 1;
+var lengthOfLastWord = function (s) {
+  let count = 0;
+  let lastWordLen = 0;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === " ") {
+      if (s[i - 1] !== " ") {
+        lastWordLen = count;
+      }
+      count = 0;
     } else {
-      ans = mid;
-      l = mid + 1;
+      count++;
     }
   }
-  return ans;
+
+  return count || lastWordLen;
 };
 
-console.log(mySqrt(4));
+console.log(lengthOfLastWord("   fly me   to   the moons   "));
+// // 69. Sqrt(x)
+
+// var mySqrt = function (x) {
+//   let l = 1;
+//   let r = x;
+
+//   let ans = 0;
+//   while (l <= r) {
+//     mid = Math.floor((l + r) / 2);
+//     if (mid * mid > x) {
+//       r = mid - 1;
+//     } else {
+//       ans = mid;
+//       l = mid + 1;
+//     }
+//   }
+//   return ans;
+// };
+
+// console.log(mySqrt(4));
 
 // // 67. Add Binary
 

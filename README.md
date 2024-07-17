@@ -16,6 +16,7 @@
 
 ### Random - EASY
 
+- 58. Length of Last Word
 - 69. Sqrt(x)
 - 67. Add Binary
 - 27. Remove Element
