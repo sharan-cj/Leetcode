@@ -1,31 +1,46 @@
-// 28. Find the Index of the First Occurrence in a String
-var strStr = function (haystack, needle) {
-  let index = -1;
-  for (let i = 0; i < haystack.length; i++) {
-    const curr = haystack[i];
+// // 27. Remove Element
 
-    if (curr === needle[0]) {
-      let j = 1;
-      let matching = true;
-      while (j < needle.length) {
-        if (haystack[i + j] !== needle[j]) {
-          matching = false;
-          break;
-        }
-        j++;
-      }
-      if (matching) {
-        index = i;
-        break;
-      }
-    }
-  }
+// var removeElement = function (nums, val) {
+//   let count = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] !== val) {
+//       // nums[count] = nums[i];
+//       count++;
+//     }
+//   }
+//   return count;
+// };
 
-  return index;
-};
+// console.log(removeElement([3, 2, 2, 3], 3));
 
-console.log(strStr("sadbutsad", "sad"));
-console.log(strStr("leetcode", "leeto"));
+// // 28. Find the Index of the First Occurrence in a String
+// var strStr = function (haystack, needle) {
+//   let index = -1;
+//   for (let i = 0; i < haystack.length; i++) {
+//     const curr = haystack[i];
+
+//     if (curr === needle[0]) {
+//       let j = 1;
+//       let matching = true;
+//       while (j < needle.length) {
+//         if (haystack[i + j] !== needle[j]) {
+//           matching = false;
+//           break;
+//         }
+//         j++;
+//       }
+//       if (matching) {
+//         index = i;
+//         break;
+//       }
+//     }
+//   }
+
+//   return index;
+// };
+
+// console.log(strStr("sadbutsad", "sad"));
+// console.log(strStr("leetcode", "leeto"));
 
 // var plusOne = function (digits) {
 //   let i = digits.length - 1;
