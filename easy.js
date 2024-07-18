@@ -1,23 +1,45 @@
-// 58. Length of Last Word
+// 35. Search Insert Position
 
-var lengthOfLastWord = function (s) {
-  let count = 0;
-  let lastWordLen = 0;
-  for (let i = 0; i < s.length; i++) {
-    if (s[i] === " ") {
-      if (s[i - 1] !== " ") {
-        lastWordLen = count;
-      }
-      count = 0;
+var searchInsert = function (nums, target) {
+  let l = 0;
+  let r = nums.length - 1;
+
+  while (l <= r) {
+    const mid = Math.floor((l + r) / 2);
+
+    if (nums[mid] === target) return mid;
+    if (nums[mid] > target) {
+      r = mid - 1;
     } else {
-      count++;
+      l = mid + 1;
     }
   }
 
-  return count || lastWordLen;
+  return l;
 };
 
-console.log(lengthOfLastWord("   fly me   to   the moons   "));
+console.log(searchInsert([1, 3, 5, 6, 7, 9, 11], 8));
+
+// // 58. Length of Last Word
+
+// var lengthOfLastWord = function (s) {
+//   let count = 0;
+//   let lastWordLen = 0;
+//   for (let i = 0; i < s.length; i++) {
+//     if (s[i] === " ") {
+//       if (s[i - 1] !== " ") {
+//         lastWordLen = count;
+//       }
+//       count = 0;
+//     } else {
+//       count++;
+//     }
+//   }
+
+//   return count || lastWordLen;
+// };
+
+// console.log(lengthOfLastWord("   fly me   to   the moons   "));
 // // 69. Sqrt(x)
 
 // var mySqrt = function (x) {
