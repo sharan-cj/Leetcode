@@ -1,51 +1,80 @@
-// 76. Minimum Window Substring
-var minWindow = function (s, t) {
-  if (t.length > s.length) return "";
+// 239. Sliding Window Maximum
+var maxSlidingWindow = function (nums, k) {
+  const arr = [];
 
-  const sMap = new Map();
-  const tMap = new Map();
+  const q = [];
+  let l = 0;
+  for (let i = 0; i < nums.length; i++) {
+    const curr = nums[i];
 
-  for (let i = 0; i < t.length; i++) {
-    const count = tMap.get(t[i]) ?? 0;
-    tMap.set(t[i], count + 1);
-  }
-
-  let left = 0;
-  let subString = "";
-  let matching = 0;
-  const reqMatch = tMap.size;
-  for (let right = 0; right < s.length; right++) {
-    const curr = s[right];
-
-    const sMapCount = (sMap.get(curr) ?? 0) + 1;
-    sMap.set(curr, sMapCount);
-
-    const tMapCount = tMap.get(curr);
-
-    if (tMapCount && sMapCount === tMapCount) {
-      matching++;
+    while (q.length && nums[q[q.length - 1]] < curr) {
+      q.pop();
     }
-    while (matching === reqMatch) {
-      const str = s.slice(left, right + 1);
-      if (!subString || str.length < subString.length) {
-        subString = str;
-      }
+    q.push(i);
 
-      const curr = s[left];
-      const sMapCount = sMap.get(curr) - 1;
-      const tMapCount = tMap.get(curr);
-      sMap.set(curr, sMapCount);
-      if (tMapCount && tMapCount > sMapCount) {
-        matching--;
-      }
-      left++;
+    if (l > q[0]) {
+      q.shift();
+    }
+
+    if (i + 1 >= k) {
+      arr.push(nums[q[0]]);
+      l++;
     }
   }
 
-  return subString;
+  return arr;
 };
 
-console.log(minWindow("aa", "aa"));
+console.log(maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3));
+
+// // 76. Minimum Window Substring
+// var minWindow = function (s, t) {
+//   if (t.length > s.length) return "";
+
+//   const sMap = new Map();
+//   const tMap = new Map();
+
+//   for (let i = 0; i < t.length; i++) {
+//     const count = tMap.get(t[i]) ?? 0;
+//     tMap.set(t[i], count + 1);
+//   }
+
+//   let left = 0;
+//   let subString = "";
+//   let matching = 0;
+//   const reqMatch = tMap.size;
+//   for (let right = 0; right < s.length; right++) {
+//     const curr = s[right];
+
+//     const sMapCount = (sMap.get(curr) ?? 0) + 1;
+//     sMap.set(curr, sMapCount);
+
+//     const tMapCount = tMap.get(curr);
+
+//     if (tMapCount && sMapCount === tMapCount) {
+//       matching++;
+//     }
+//     while (matching === reqMatch) {
+//       const str = s.slice(left, right + 1);
+//       if (!subString || str.length < subString.length) {
+//         subString = str;
+//       }
+
+//       const curr = s[left];
+//       const sMapCount = sMap.get(curr) - 1;
+//       const tMapCount = tMap.get(curr);
+//       sMap.set(curr, sMapCount);
+//       if (tMapCount && tMapCount > sMapCount) {
+//         matching--;
+//       }
+//       left++;
+//     }
+//   }
+
+//   return subString;
+// };
+
+// console.log(minWindow("aa", "aa"));
 
 // // 567. Permutation in String
 
