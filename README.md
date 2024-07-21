@@ -1,6 +1,7 @@
 ### Linked List
 
 - 206. Reverse Linked List
+- 83. Remove Duplicates from Sorted List
 
 ### Sliding Window
 
