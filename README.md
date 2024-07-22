@@ -1,5 +1,6 @@
 ### Linked List
 
+- 21. Merge Two Sorted Lists
 - 206. Reverse Linked List
 - 83. Remove Duplicates from Sorted List
 
