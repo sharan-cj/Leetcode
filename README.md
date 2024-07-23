@@ -23,6 +23,7 @@
 
 ### Random - EASY
 
+- 136. Single Number
 - 35. Search Insert Position
 - 58. Length of Last Word
 - 69. Sqrt(x)

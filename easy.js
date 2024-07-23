@@ -1,24 +1,37 @@
-// 35. Search Insert Position
+// 136. Single Number
 
-var searchInsert = function (nums, target) {
-  let l = 0;
-  let r = nums.length - 1;
+var singleNumber = function (nums) {
+  let sum = 0;
 
-  while (l <= r) {
-    const mid = Math.floor((l + r) / 2);
-
-    if (nums[mid] === target) return mid;
-    if (nums[mid] > target) {
-      r = mid - 1;
-    } else {
-      l = mid + 1;
-    }
+  for (let i = 0; i < nums.length; i++) {
+    sum ^= nums[i];
   }
-
-  return l;
+  return sum;
 };
 
-console.log(searchInsert([1, 3, 5, 6, 7, 9, 11], 8));
+console.log(singleNumber([4, 1, 2, 1, 2]));
+
+// // 35. Search Insert Position
+
+// var searchInsert = function (nums, target) {
+//   let l = 0;
+//   let r = nums.length - 1;
+
+//   while (l <= r) {
+//     const mid = Math.floor((l + r) / 2);
+
+//     if (nums[mid] === target) return mid;
+//     if (nums[mid] > target) {
+//       r = mid - 1;
+//     } else {
+//       l = mid + 1;
+//     }
+//   }
+
+//   return l;
+// };
+
+// console.log(searchInsert([1, 3, 5, 6, 7, 9, 11], 8));
 
 // // 58. Length of Last Word
 
