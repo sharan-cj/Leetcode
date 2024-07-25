@@ -1,25 +1,71 @@
-// 169. Majority Element
+// 168. Excel Sheet Column Title
 
-var majorityElement = function (nums) {
-  let count = 1;
-  let num = nums[0];
-  for (let i = 1; i < nums.length; i++) {
-    if (nums[i] === num) {
-      count++;
-    } else {
-      count--;
-    }
+var convertToTitle = function (columnNumber) {
+  const arr = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
 
-    if (count < 0) {
-      num = nums[i];
-      count = 1;
-    }
+  let num = columnNumber;
+  let output = [];
+  while (num > 0) {
+    num--;
+    const rem = num % 26;
+    output.push(arr[rem]);
+    num = Math.floor(num / 26);
   }
 
-  return num;
+  return output.reverse().join("");
 };
 
-console.log(majorityElement([3, 2, 3]));
+console.log(convertToTitle(701));
+
+// // 169. Majority Element
+
+// var majorityElement = function (nums) {
+//   let count = 1;
+//   let num = nums[0];
+//   for (let i = 1; i < nums.length; i++) {
+//     if (nums[i] === num) {
+//       count++;
+//     } else {
+//       count--;
+//     }
+
+//     if (count < 0) {
+//       num = nums[i];
+//       count = 1;
+//     }
+//   }
+
+//   return num;
+// };
+
+// console.log(majorityElement([3, 2, 3]));
 // // 136. Single Number
 
 // var singleNumber = function (nums) {

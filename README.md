@@ -23,6 +23,7 @@
 
 ### Random - EASY
 
+- 168. Excel Sheet Column Title
 - 169. Majority Element
 - 136. Single Number
 - 35. Search Insert Position
