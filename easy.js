@@ -1,15 +1,37 @@
-// 136. Single Number
+// 169. Majority Element
 
-var singleNumber = function (nums) {
-  let sum = 0;
+var majorityElement = function (nums) {
+  let count = 1;
+  let num = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] === num) {
+      count++;
+    } else {
+      count--;
+    }
 
-  for (let i = 0; i < nums.length; i++) {
-    sum ^= nums[i];
+    if (count < 0) {
+      num = nums[i];
+      count = 1;
+    }
   }
-  return sum;
+
+  return num;
 };
 
-console.log(singleNumber([4, 1, 2, 1, 2]));
+console.log(majorityElement([3, 2, 3]));
+// // 136. Single Number
+
+// var singleNumber = function (nums) {
+//   let sum = 0;
+
+//   for (let i = 0; i < nums.length; i++) {
+//     sum ^= nums[i];
+//   }
+//   return sum;
+// };
+
+// console.log(singleNumber([4, 1, 2, 1, 2]));
 
 // // 35. Search Insert Position
 
