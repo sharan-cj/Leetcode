@@ -1,3 +1,5 @@
+// 258. Add Digits
+
 var addDigits = function (num) {
   if (num < 10) return num;
 
