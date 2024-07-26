@@ -2,17 +2,21 @@
 
 var addDigits = function (num) {
   if (num < 10) return num;
-
-  let sum = 0;
-
-  while (num > 0) {
-    const rem = num % 10;
-    num = Math.floor(num / 10);
-    sum += rem;
-  }
-
-  return addDigits(sum);
+  return num % 9 === 0 ? 9 : num % 9;
 };
+// var addDigits = function (num) {
+//   if (num < 10) return num;
+
+//   let sum = 0;
+
+//   while (num > 0) {
+//     const rem = num % 10;
+//     num = Math.floor(num / 10);
+//     sum += rem;
+//   }
+
+//   return addDigits(sum);
+// };
 
 console.log(addDigits(0));
 
