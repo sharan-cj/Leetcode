@@ -1,48 +1,64 @@
-// 168. Excel Sheet Column Title
+var addDigits = function (num) {
+  if (num < 10) return num;
 
-var convertToTitle = function (columnNumber) {
-  const arr = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
+  let sum = 0;
 
-  let num = columnNumber;
-  let output = [];
   while (num > 0) {
-    num--;
-    const rem = num % 26;
-    output.push(arr[rem]);
-    num = Math.floor(num / 26);
+    const rem = num % 10;
+    num = Math.floor(num / 10);
+    sum += rem;
   }
 
-  return output.reverse().join("");
+  return addDigits(sum);
 };
 
-console.log(convertToTitle(701));
+console.log(addDigits(0));
+
+// // 168. Excel Sheet Column Title
+
+// var convertToTitle = function (columnNumber) {
+//   const arr = [
+//     "A",
+//     "B",
+//     "C",
+//     "D",
+//     "E",
+//     "F",
+//     "G",
+//     "H",
+//     "I",
+//     "J",
+//     "K",
+//     "L",
+//     "M",
+//     "N",
+//     "O",
+//     "P",
+//     "Q",
+//     "R",
+//     "S",
+//     "T",
+//     "U",
+//     "V",
+//     "W",
+//     "X",
+//     "Y",
+//     "Z",
+//   ];
+
+//   let num = columnNumber;
+//   let output = [];
+//   while (num > 0) {
+//     num--;
+//     const rem = num % 26;
+//     output.push(arr[rem]);
+//     num = Math.floor(num / 26);
+//   }
+
+//   return output.reverse().join("");
+// };
+
+// console.log(convertToTitle(701));
 
 // // 169. Majority Element
 
