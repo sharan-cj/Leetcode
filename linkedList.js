@@ -84,3 +84,48 @@ var removeElements = function (head, val) {
 
   return start.next;
 };
+
+// 160. Intersection of Two Linked Lists
+var getIntersectionNode = function (headA, headB) {
+  let Alen = 0;
+  let Blen = 0;
+
+  let hA = headA;
+  let hB = headB;
+  while (hA || hB) {
+    if (hA) {
+      Alen++;
+      hA = hA.next;
+    }
+
+    if (hB) {
+      Blen++;
+      hB = hB.next;
+    }
+  }
+
+  if (Blen > Alen) {
+    hB = headA;
+    hA = headB;
+  } else {
+    hA = headA;
+    hB = headB;
+  }
+
+  let diff = Math.abs(Alen - Blen);
+  while (diff > 0) {
+    hA = hA.next;
+    diff--;
+  }
+
+  while (hA && hB) {
+    if (hA === hB) {
+      return hA;
+    }
+
+    hA = hA.next;
+    hB = hB.next;
+  }
+
+  return null;
+};
