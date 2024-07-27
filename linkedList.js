@@ -65,3 +65,22 @@ var reverseList = function (head) {
 
   return prev;
 };
+
+// 203. Remove Linked List Elements
+var removeElements = function (head, val) {
+  if (!head) return head;
+
+  const start = new ListNode(null, head);
+  let prev = start;
+  let h = head;
+  while (h) {
+    if (h.val === val) {
+      prev.next = h.next;
+    } else {
+      prev = h;
+    }
+    h = h.next;
+  }
+
+  return start.next;
+};
