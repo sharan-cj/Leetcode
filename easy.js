@@ -1,9 +1,21 @@
-// 258. Add Digits
-
-var addDigits = function (num) {
-  if (num < 10) return num;
-  return num % 9 === 0 ? 9 : num % 9;
+// 171. Excel Sheet Column Number
+var titleToNumber = function (columnTitle) {
+  const A = "A".charCodeAt(0) - 1;
+  let sum = 0;
+  for (let i = 0; i < columnTitle.length; i++) {
+    sum = sum * 26 + (columnTitle.charCodeAt(i) - A);
+  }
+  return sum;
 };
+
+console.log(titleToNumber("AA"));
+
+// // 258. Add Digits
+
+// var addDigits = function (num) {
+//   if (num < 10) return num;
+//   return num % 9 === 0 ? 9 : num % 9;
+// };
 // var addDigits = function (num) {
 //   if (num < 10) return num;
 
@@ -18,7 +30,7 @@ var addDigits = function (num) {
 //   return addDigits(sum);
 // };
 
-console.log(addDigits(0));
+// console.log(addDigits(0));
 
 // // 168. Excel Sheet Column Title
 

@@ -26,6 +26,7 @@
 
 ### Random - EASY
 
+- 171. Excel Sheet Column Number
 - 258. Add Digits
 - 168. Excel Sheet Column Title
 - 169. Majority Element
