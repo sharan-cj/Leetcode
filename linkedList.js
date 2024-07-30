@@ -12,6 +12,7 @@
  * @param {ListNode} list2
  * @return {ListNode}
  */
+
 var mergeTwoLists = function (list1, list2) {
   const list = new ListNode();
   let tail = list;
@@ -35,7 +36,6 @@ var mergeTwoLists = function (list1, list2) {
 
   return list.next;
 };
-
 // 83. Remove Duplicates from Sorted List
 var deleteDuplicates = function (head) {
   let res = head;
@@ -180,4 +180,37 @@ var reorderList = function (head) {
     middle = middleNext;
   }
   return head;
+};
+
+// 19. Remove Nth Node From End of List
+var removeNthFromEnd = function (head, n) {
+  if (!head.next) return null;
+  let fast = head;
+  let len = 0;
+  while (fast && fast.next) {
+    fast = fast.next.next;
+    len += 2;
+  }
+
+  if (fast?.next || fast) {
+    len += 1;
+  }
+
+  let position = len - n;
+  let index = 1;
+
+  if (position < 1) {
+    head = head.next;
+    return head;
+  }
+
+  let h = head;
+
+  while (index < position && head.next) {
+    index++;
+    head = head.next;
+  }
+  head.next = head.next?.next ?? null;
+
+  return h;
 };
