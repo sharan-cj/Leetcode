@@ -145,3 +145,39 @@ var hasCycle = function (head) {
   }
   return false;
 };
+
+// 143. Reorder List
+var reorderList = function (head) {
+  let fast = head;
+  let slow = head;
+
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  let curr = slow.next;
+  let prev = null;
+  let next = null;
+  slow.next = null;
+  while (curr) {
+    next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+  }
+
+  let start = head;
+  let middle = prev;
+  while (middle) {
+    const startNext = start.next;
+    const middleNext = middle.next;
+
+    start.next = middle;
+    middle.next = startNext;
+
+    start = startNext;
+    middle = middleNext;
+  }
+  return head;
+};
