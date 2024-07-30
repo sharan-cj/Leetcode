@@ -250,3 +250,35 @@ var copyRandomList = function (head) {
 
   return resHead;
 };
+
+// 2. Add Two Numbers
+var addTwoNumbers = function (l1, l2) {
+  let total = new ListNode(null, null);
+  let totalHead = total;
+  let carry = 0;
+  while (l1 || l2) {
+    let sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carry;
+    if (sum > 9) {
+      sum = sum - 10;
+      carry = 1;
+    } else {
+      carry = 0;
+    }
+    const sumNode = new ListNode(sum, null);
+    total.next = sumNode;
+    total = total.next;
+    if (l1) {
+      l1 = l1.next;
+    }
+    if (l2) {
+      l2 = l2.next;
+    }
+  }
+
+  if (carry) {
+    const node = new ListNode(carry, null);
+    total.next = node;
+  }
+
+  return totalHead.next;
+};
