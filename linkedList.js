@@ -214,3 +214,39 @@ var removeNthFromEnd = function (head, n) {
 
   return h;
 };
+
+// 138. Copy List with Random Pointer
+
+var copyRandomList = function (head) {
+  if (!head) return head;
+
+  let curr = head;
+
+  while (curr) {
+    const newNode = new _Node(curr.val, null, null);
+    newNode.next = curr.next;
+    curr.next = newNode;
+    curr = newNode.next;
+  }
+
+  curr = head;
+  while (curr) {
+    curr.next.random = curr.random?.next ?? null;
+    curr = curr.next.next;
+  }
+
+  let og = head;
+  let resHead = head.next;
+  let copy = resHead;
+  while (og) {
+    og.next = copy.next;
+    og = og.next;
+
+    if (og) {
+      copy.next = og.next;
+      copy = copy.next;
+    }
+  }
+
+  return resHead;
+};
