@@ -1,5 +1,6 @@
 ### Linked List
 
+- 287. Find the Duplicate Number
 - 2. Add Two Numbers
 - 138. Copy List with Random Pointer
 - 19. Remove Nth Node From End of List
