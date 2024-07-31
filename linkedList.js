@@ -302,3 +302,75 @@ var findDuplicate = function (nums) {
 
   return slow;
 };
+
+// 146. LRU Cache
+
+/**
+ * @param {number} capacity
+ */
+var LRUCache = function (capacity) {
+  this.capacity = capacity;
+  this.left = new Node(null, null, null, null);
+  this.right = new Node(null, null, null, null);
+  this.left.next = this.right;
+  this.right.prev = this.left;
+  this.cache = new Map();
+};
+
+var Node = function (key, val, prev, next) {
+  this.key = key;
+  this.val = val;
+  this.prev = prev;
+  this.next = next;
+};
+
+LRUCache.prototype.add = function (node) {
+  let prev = this.right.prev;
+  this.right.prev = node;
+  node.next = this.right;
+  node.prev = prev;
+  prev.next = node;
+};
+
+LRUCache.prototype.remove = function (node) {
+  let prev = node.prev;
+  let next = node.next;
+  prev.next = next;
+  next.prev = prev;
+};
+
+/**
+ * @param {number} key
+ * @return {number}
+ */
+LRUCache.prototype.get = function (key) {
+  const node = this.cache.get(key);
+  if (node) {
+    this.remove(node);
+    this.add(node);
+    return node.val;
+  }
+  return -1;
+};
+
+/**
+ * @param {number} key
+ * @param {number} value
+ * @return {void}
+ */
+LRUCache.prototype.put = function (key, value) {
+  const node = this.cache.get(key);
+  if (node) {
+    this.remove(node);
+  }
+
+  let newNode = new Node(key, value, null, null);
+  this.add(newNode);
+  this.cache.set(key, newNode);
+
+  if (this.cache.size > this.capacity) {
+    const lru = this.left.next;
+    this.remove(lru);
+    this.cache.delete(lru.key);
+  }
+};
