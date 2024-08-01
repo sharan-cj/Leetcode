@@ -374,3 +374,47 @@ LRUCache.prototype.put = function (key, value) {
     this.cache.delete(lru.key);
   }
 };
+
+var mergeKLists = function (lists) {
+  if (!lists || !lists.length) {
+    return null;
+  }
+
+  while (lists.length > 1) {
+    const mergedListsArr = [];
+
+    for (let i = 0; i < lists.length; i += 2) {
+      const l1 = lists[i];
+      const l2 = lists[i + 1] ?? null;
+      mergedListsArr.push(mergeList(l1, l2));
+    }
+
+    lists = mergedListsArr;
+  }
+  return lists[0];
+};
+
+var mergeList = function (l1, l2) {
+  let dummy = new ListNode(null);
+  let list = dummy;
+  while (l1 && l2) {
+    if (l1.val > l2.val) {
+      dummy.next = l2;
+      l2 = l2.next;
+    } else {
+      dummy.next = l1;
+      l1 = l1.next;
+    }
+    dummy = dummy.next;
+  }
+
+  if (l1) {
+    dummy.next = l1;
+  }
+
+  if (l2) {
+    dummy.next = l2;
+  }
+
+  return list.next;
+};

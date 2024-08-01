@@ -1,5 +1,6 @@
 ### Linked List
 
+- 23. Merge k Sorted Lists
 - 146. LRU Cache
 - 287. Find the Duplicate Number
 - 2. Add Two Numbers
