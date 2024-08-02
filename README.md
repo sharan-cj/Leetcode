@@ -1,57 +1,61 @@
+### Trees
+
+- L226. Invert Binary Tree
+
 ### Linked List
 
-- 23. Merge k Sorted Lists
-- 146. LRU Cache
-- 287. Find the Duplicate Number
-- 2. Add Two Numbers
-- 138. Copy List with Random Pointer
-- 19. Remove Nth Node From End of List
-- 143. Reorder List
-- 141. Linked List Cycle
-- 160. Intersection of Two Linked Lists
-- 203. Remove Linked List Elements
-- 21. Merge Two Sorted Lists
-- 206. Reverse Linked List
-- 83. Remove Duplicates from Sorted List
+- L23. Merge k Sorted Lists
+- L146. LRU Cache
+- L287. Find the Duplicate Number
+- L2. Add Two Numbers
+- L138. Copy List with Random Pointer
+- L19. Remove Nth Node From End of List
+- L143. Reorder List
+- L141. Linked List Cycle
+- L160. Intersection of Two Linked Lists
+- L203. Remove Linked List Elements
+- L21. Merge Two Sorted Lists
+- L206. Reverse Linked List
+- L83. Remove Duplicates from Sorted List
 
 ### Sliding Window
 
-- 239. Sliding Window Maximum
-- 76. Minimum Window Substring
-- 567. Permutation in String
-- 424. Longest Repeating Character Replacement
-- 3. Longest Substring Without Repeating Characters
-- 121. Best Time to Buy and Sell Stock
+- L239. Sliding Window Maximum
+- L76. Minimum Window Substring
+- L567. Permutation in String
+- L424. Longest Repeating Character Replacement
+- L3. Longest Substring Without Repeating Characters
+- L121. Best Time to Buy and SelLStock
 
 ### Binary Search
 
-- 33. Search in Rotated Sorted Array
-- 153.  Find Minimum in Rotated Sorted Array
-- 875.  Koko Eating Bananas
-- 74. Search a 2D Matrix
-- 704.  Binary Search
+- L33. Search in Rotated Sorted Array
+- L153. Find Minimum in Rotated Sorted Array
+- L875. Koko Eating Bananas
+- L74. Search a 2D Matrix
+- L704. Binary Search
 
-### Random - EASY
+### Random - LEASY
 
-- 171. Excel Sheet Column Number
-- 258. Add Digits
-- 168. Excel Sheet Column Title
-- 169. Majority Element
-- 136. Single Number
-- 35. Search Insert Position
-- 58. Length of Last Word
-- 69. Sqrt(x)
-- 67. Add Binary
-- 27. Remove Element
-- 28. Find the Index of the First Occurrence in a String
-- 66. Plus One
-- 70. Climbing Stairs
-- 27. Remove Element
-- 13. Roman to Integer
+- L171. ExceLSheet Column Number
+- L258. Add Digits
+- L168. ExceLSheet Column Title
+- L169. Majority Element
+- L136. Single Number
+- L35. Search Insert Position
+- L58. Length of Last Word
+- L69. Sqrt(x)
+- L67. Add Binary
+- L27. Remove Element
+- L28. Find the Index of the First Occurrence in a String
+- L66. Plus One
+- L70. Climbing Stairs
+- L27. Remove Element
+- L13. Roman to Integer
 
 ### Stack
 
-- 853.  Car Fleet
-- 739.  Daily Temperatures
-- 22. Generate Parentheses
-- 84. Largest Rectangle in Histogram
+- L853. Car Fleet
+- L739. Daily Temperatures
+- L22. Generate Parentheses
+- L84. Largest Rectangle in Histogram
