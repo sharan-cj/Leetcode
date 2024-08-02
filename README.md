@@ -1,5 +1,6 @@
 ### Trees
 
+- L104. Maximum Depth of Binary Tree
 - L226. Invert Binary Tree
 
 ### Linked List
