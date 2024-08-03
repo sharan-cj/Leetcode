@@ -26,3 +26,24 @@ var maxDepth = function (root) {
   if (!root) return 0;
   return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 };
+
+// 543. Diameter of Binary Tree
+var diameterOfBinaryTree = function (root) {
+  let maxDia = 0;
+
+  const findHeight = (node) => {
+    if (!node) return 0;
+
+    const leftHeight = findHeight(node.left);
+    const rightHeight = findHeight(node.right);
+
+    const dia = leftHeight + rightHeight;
+
+    maxDia = Math.max(dia, maxDia);
+
+    return 1 + Math.max(leftHeight, rightHeight);
+  };
+
+  findHeight(root);
+  return maxDia;
+};
