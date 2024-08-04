@@ -79,3 +79,33 @@ var isSameTree = function (p, q) {
 
   return dfs(p, q);
 };
+
+// 572. Subtree of Another Tree
+var isSubtree = function (root, subRoot) {
+  const dfs = (node, subNode) => {
+    if (!node || !subNode) {
+      return node === subNode;
+    }
+    if (node.val !== subNode.val) return false;
+    const leftNodes = dfs(node.left, subNode.left);
+    const rightNodes = dfs(node.right, subNode.right);
+    return leftNodes && rightNodes;
+  };
+
+  const search = (main, sub) => {
+    if (!main) {
+      return false;
+    }
+    if (dfs(main, sub)) {
+      return true;
+    }
+
+    if (search(main.left, sub)) {
+      return true;
+    }
+
+    return search(main.right, sub);
+  };
+
+  return search(root, subRoot);
+};

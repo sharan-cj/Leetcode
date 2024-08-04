@@ -1,5 +1,6 @@
 ### Trees
 
+- L572. Subtree of Another Tree
 - L100. Same Tree
 - L110. Balanced Binary Tree
 - L543. Diameter of Binary Tree
