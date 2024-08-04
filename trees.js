@@ -47,3 +47,21 @@ var diameterOfBinaryTree = function (root) {
   findHeight(root);
   return maxDia;
 };
+
+// 110. Balanced Binary Tree
+
+var isBalanced = function (root) {
+  const dfs = (node) => {
+    if (!node) return [true, 0];
+
+    const [leftBalanced, leftHeight] = dfs(node.left);
+    const [rightBalanced, rightHeight] = dfs(node.right);
+
+    const height = Math.max(leftHeight, rightHeight);
+    const diff = Math.abs(leftHeight - rightHeight);
+    return [leftBalanced && rightBalanced && diff <= 1, height + 1];
+  };
+
+  const [isBalanced] = dfs(root);
+  return isBalanced;
+};
