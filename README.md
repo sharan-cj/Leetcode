@@ -1,5 +1,6 @@
 ### Trees
 
+- L100. Same Tree
 - L110. Balanced Binary Tree
 - L543. Diameter of Binary Tree
 - L104. Maximum Depth of Binary Tree

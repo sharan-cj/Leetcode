@@ -65,3 +65,17 @@ var isBalanced = function (root) {
   const [isBalanced] = dfs(root);
   return isBalanced;
 };
+
+// 100. Same Tree
+var isSameTree = function (p, q) {
+  function dfs(pNode, gNode) {
+    if (!pNode || !gNode) {
+      return pNode === gNode;
+    }
+    const leftNodes = dfs(pNode.left, gNode.left);
+    const rightNodes = dfs(pNode.right, gNode.right);
+    return leftNodes && rightNodes && pNode.val === gNode.val;
+  }
+
+  return dfs(p, q);
+};
