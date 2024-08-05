@@ -1,5 +1,6 @@
 ### Trees
 
+- L235. Lowest Common Ancestor of a Binary Search Tree
 - L572. Subtree of Another Tree
 - L100. Same Tree
 - L110. Balanced Binary Tree

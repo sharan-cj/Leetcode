@@ -109,3 +109,17 @@ var isSubtree = function (root, subRoot) {
 
   return search(root, subRoot);
 };
+
+// 235. Lowest Common Ancestor of a Binary Search Tree
+var lowestCommonAncestor = function (root, p, q) {
+  let curr = root;
+  while (curr) {
+    if (p.val > curr.val && q.val > curr.val) {
+      curr = curr.right;
+    } else if (p.val < curr.val && q.val < curr.val) {
+      curr = curr.left;
+    } else {
+      return curr;
+    }
+  }
+};
