@@ -187,3 +187,14 @@ var goodNodes = function (root) {
   dfs(root, -Infinity);
   return good;
 };
+
+// 98. Validate Binary Search Tree
+var isValidBST = function (root) {
+  const dfs = (node, MIN, MAX) => {
+    if (!node) return true;
+    if (node.val <= MIN || node.val >= MAX) return false;
+
+    return dfs(node.left, MIN, node.val) && dfs(node.right, node.val, MAX);
+  };
+  return dfs(root, -Infinity, Infinity);
+};

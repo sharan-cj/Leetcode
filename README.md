@@ -1,5 +1,6 @@
 ### Trees
 
+- L98. Validate Binary Search Tree
 - L1448. Count Good Nodes in Binary Tree
 - L199. Binary Tree Right Side View
 - L102. Binary Tree Level Order Traversal
