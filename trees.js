@@ -148,3 +148,27 @@ var levelOrder = function (root) {
 
   return result;
 };
+
+// 199. Binary Tree Right Side View
+
+var rightSideView = function (root) {
+  const q = [root];
+  const res = [];
+
+  while (q.length) {
+    qLen = q.length;
+    const level = [];
+    for (let i = 0; i < qLen; i++) {
+      const node = q.shift();
+      if (node) {
+        q.push(node.left);
+        q.push(node.right);
+        level.push(node.val);
+      }
+    }
+    if (level.length) {
+      res.push(level.pop());
+    }
+  }
+  return res;
+};
