@@ -172,3 +172,18 @@ var rightSideView = function (root) {
   }
   return res;
 };
+
+// 1448. Count Good Nodes in Binary Tree
+var goodNodes = function (root) {
+  let good = 0;
+  const dfs = (node, max) => {
+    if (!node) return;
+    if (node.val >= max) {
+      good++;
+    }
+    dfs(node.left, Math.max(max, node.val));
+    dfs(node.right, Math.max(max, node.val));
+  };
+  dfs(root, -Infinity);
+  return good;
+};
