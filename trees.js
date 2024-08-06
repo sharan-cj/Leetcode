@@ -123,3 +123,28 @@ var lowestCommonAncestor = function (root, p, q) {
     }
   }
 };
+
+// 102. Binary Tree Level Order Traversal
+var levelOrder = function (root) {
+  const queue = [root];
+  const result = [];
+
+  while (queue.length) {
+    const level = [];
+    const qLen = queue.length;
+    for (let i = 0; i < qLen; i++) {
+      const node = queue.shift();
+      if (node) {
+        level.push(node.val);
+        queue.push(node.left);
+        queue.push(node.right);
+      }
+    }
+
+    if (level.length) {
+      result.push(level);
+    }
+  }
+
+  return result;
+};
