@@ -157,17 +157,17 @@ var rightSideView = function (root) {
 
   while (q.length) {
     qLen = q.length;
-    const level = [];
+    let rs = null;
     for (let i = 0; i < qLen; i++) {
       const node = q.shift();
       if (node) {
         q.push(node.left);
         q.push(node.right);
-        level.push(node.val);
+        rs = node.val;
       }
     }
-    if (level.length) {
-      res.push(level.pop());
+    if (rs !== null) {
+      res.push(rs);
     }
   }
   return res;

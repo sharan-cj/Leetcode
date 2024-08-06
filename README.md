@@ -43,7 +43,7 @@
 - L74. Search a 2D Matrix
 - L704. Binary Search
 
-### Random - LEASY
+### Random - EASY
 
 - L171. ExceLSheet Column Number
 - L258. Add Digits
