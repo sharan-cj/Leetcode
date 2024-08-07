@@ -1,5 +1,6 @@
 ### Trees
 
+- L230. Kth Smallest Element in a BST
 - L98. Validate Binary Search Tree
 - L1448. Count Good Nodes in Binary Tree
 - L199. Binary Tree Right Side View

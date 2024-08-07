@@ -198,3 +198,24 @@ var isValidBST = function (root) {
   };
   return dfs(root, -Infinity, Infinity);
 };
+
+// 230. Kth Smallest Element in a BST
+var kthSmallest = function (root, k) {
+  const stack = [];
+  let curr = root;
+  let count = 0;
+
+  while (curr || stack.length) {
+    while (curr) {
+      stack.push(curr);
+      curr = curr.left;
+    }
+    const node = stack.pop();
+    count++;
+
+    if (count === k) {
+      return node.val;
+    }
+    curr = node.right;
+  }
+};
