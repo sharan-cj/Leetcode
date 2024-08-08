@@ -1,5 +1,6 @@
 ### Trees
 
+- L105. Construct Binary Tree from Preorder and Inorder Traversal
 - L230. Kth Smallest Element in a BST
 - L98. Validate Binary Search Tree
 - L1448. Count Good Nodes in Binary Tree
