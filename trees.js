@@ -260,3 +260,42 @@ var maxPathSum = function (root) {
   dfs(root);
   return maxSum;
 };
+
+// 297. Serialize and Deserialize Binary Tree
+
+var serialize = function (root) {
+  let arr = [];
+
+  const dfs = (node) => {
+    if (!node) return arr.push("#");
+    arr.push(node.val);
+    dfs(node.left);
+    dfs(node.right);
+  };
+  dfs(root);
+  return arr.join(",");
+};
+
+/**
+ * Decodes your encoded data to tree.
+ *
+ * @param {string} data
+ * @return {TreeNode}
+ */
+var deserialize = function (data) {
+  const arr = data.split(",");
+  let index = 0;
+  const dfs = () => {
+    if (arr[index] === "#") {
+      index++;
+      return null;
+    }
+    const root = new TreeNode(Number(arr[index]));
+    index++;
+    root.left = dfs();
+    root.right = dfs();
+    return root;
+  };
+
+  return dfs();
+};
