@@ -236,3 +236,27 @@ var buildTree = function (preorder, inorder) {
 
   return root;
 };
+
+// 124. Binary Tree Maximum Path Sum
+var maxPathSum = function (root) {
+  let maxSum = root.val;
+
+  const dfs = (node) => {
+    if (!node) return 0;
+
+    let left = dfs(node.left);
+    let right = dfs(node.right);
+
+    left = Math.max(left, 0);
+    right = Math.max(right, 0);
+    const sum = left + node.val + right;
+
+    if (sum > maxSum) {
+      maxSum = sum;
+    }
+    return Math.max(left, right) + node.val;
+  };
+
+  dfs(root);
+  return maxSum;
+};
