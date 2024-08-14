@@ -299,3 +299,20 @@ var deserialize = function (data) {
 
   return dfs();
 };
+
+// 94. Binary Tree Inorder Traversal
+var inorderTraversal = function (root) {
+  const arr = [];
+  const dfs = (node) => {
+    if (!node) {
+      return;
+    }
+
+    dfs(node.left);
+    arr.push(node.val);
+    dfs(node.right);
+  };
+
+  dfs(root);
+  return arr;
+};

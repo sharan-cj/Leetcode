@@ -4,6 +4,7 @@
 
 ### Trees
 
+- L94. Binary Tree Inorder Traversal
 - L297. Serialize and Deserialize Binary Tree
 - L124. Binary Tree Maximum Path Sum
 - L105. Construct Binary Tree from Preorder and Inorder Traversal
