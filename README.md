@@ -1,6 +1,7 @@
 ### Heap / Priority Queue
 
 - L703. Kth Largest Element in a Stream
+- L1046. Last Stone Weight
 
 ### Trees
 
