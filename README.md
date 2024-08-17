@@ -1,5 +1,6 @@
 ### Heap / Priority Queue
 
+- L973. K Closest Points to Origin
 - L703. Kth Largest Element in a Stream
 - L1046. Last Stone Weight
 
