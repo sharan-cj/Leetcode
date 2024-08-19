@@ -61,3 +61,18 @@ var kClosest = function (points, k) {
 
   return out;
 };
+
+// 215. Kth Largest Element in an Array
+
+var findKthLargest = function (nums, k) {
+  const heap = new MinPriorityQueue();
+
+  for (n of nums) {
+    heap.enqueue(n);
+    if (heap.size() > k) {
+      heap.dequeue();
+    }
+  }
+
+  return heap.front().element;
+};
