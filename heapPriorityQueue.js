@@ -76,3 +76,38 @@ var findKthLargest = function (nums, k) {
 
   return heap.front().element;
 };
+
+// 621. Task Scheduler
+
+var leastInterval = function (tasks, n) {
+  const map = new Map();
+
+  for (let task of tasks) {
+    const count = map.get(task) ?? 0;
+    map.set(task, count + 1);
+  }
+
+  const maxHeap = new MaxPriorityQueue();
+  map.forEach((val) => {
+    maxHeap.enqueue(val);
+  });
+
+  const q = [];
+  let timer = 0;
+  while (maxHeap.size() || q.length) {
+    timer++;
+    if (maxHeap.size()) {
+      let task = maxHeap.dequeue().element ?? 0;
+      task--;
+      if (task > 0) {
+        q.push({ task, timer: timer + n });
+      }
+    }
+    if (q.length && q[0].timer <= timer) {
+      const task = q.shift();
+      maxHeap.enqueue(task.task);
+    }
+  }
+
+  return timer;
+};
