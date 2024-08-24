@@ -5,6 +5,7 @@
 - L703. Kth Largest Element in a Stream
 - L1046. Last Stone Weight
 - L621. Task Scheduler
+- L506. Relative Ranks
 
 ### Trees
 

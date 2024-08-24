@@ -111,3 +111,32 @@ var leastInterval = function (tasks, n) {
 
   return timer;
 };
+
+// 506. Relative Ranks
+var findRelativeRanks = function (score) {
+  const res = [];
+  const map = new Map();
+  const maxHeap = new MaxPriorityQueue();
+  for (let i in score) {
+    map.set(score[i], i);
+    maxHeap.enqueue(score[i]);
+  }
+
+  let rank = 0;
+
+  while (maxHeap.size()) {
+    rank++;
+    const score = maxHeap.dequeue().element;
+    if (rank === 1) {
+      res[map.get(score)] = "Gold Medal";
+    } else if (rank === 2) {
+      res[map.get(score)] = "Silver Medal";
+    } else if (rank === 3) {
+      res[map.get(score)] = "Bronze Medal";
+    } else {
+      res[map.get(score)] = `${rank}`;
+    }
+  }
+
+  return res;
+};
