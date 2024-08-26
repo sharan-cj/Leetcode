@@ -22,6 +22,7 @@ KthLargest.prototype.add = function (val) {
   return this.minHeap.front().element;
 };
 
+// 1046. Last Stone Weight
 /**
  * @param {number[]} stones
  * @return {number}
@@ -139,4 +140,20 @@ var findRelativeRanks = function (score) {
   }
 
   return res;
+};
+
+// 1464. Maximum Product of Two Elements in an Array
+var maxProduct = function (nums) {
+  const minHeap = new MinPriorityQueue();
+  for (n of nums) {
+    if (minHeap.size() < 2) {
+      minHeap.enqueue(n);
+    } else if (minHeap.front().element < n) {
+      minHeap.dequeue();
+      minHeap.enqueue(n);
+    }
+  }
+  const i = minHeap.dequeue().element;
+  const j = minHeap.dequeue().element;
+  return (i - 1) * (j - 1);
 };
