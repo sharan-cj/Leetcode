@@ -6,7 +6,6 @@
 - L1046. Last Stone Weight
 - L621. Task Scheduler
 - L506. Relative Ranks
-- L1046. Last Stone Weight
 
 ### Trees
 

@@ -140,22 +140,3 @@ var findRelativeRanks = function (score) {
 
   return res;
 };
-
-// 1046. Last Stone Weight
-
-var lastStoneWeight = function (stones) {
-  const heap = new MaxPriorityQueue();
-
-  for (let stone of stones) {
-    heap.enqueue(stone);
-  }
-
-  while (heap.size() > 1) {
-    const first = heap.dequeue().element;
-    const second = heap.dequeue().element;
-    if (first !== second) {
-      heap.enqueue(first - second);
-    }
-  }
-  return heap.size() === 0 ? 0 : heap.front().element;
-};
