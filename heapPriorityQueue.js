@@ -157,3 +157,26 @@ var maxProduct = function (nums) {
   const j = minHeap.dequeue().element;
   return (i - 1) * (j - 1);
 };
+
+// 2099. Find Subsequence of Length K With the Largest Sum
+var maxSubsequence = function (nums, k) {
+  const minHeap = new MinPriorityQueue();
+
+  for (let i in nums) {
+    if (minHeap.size() < k) {
+      minHeap.enqueue(i, nums[i]);
+    } else if (minHeap.front().priority < nums[i]) {
+      minHeap.dequeue();
+      minHeap.enqueue(i, nums[i]);
+    }
+  }
+
+  const res = [];
+
+  while (minHeap.size()) {
+    const num = minHeap.dequeue();
+    res.push(num);
+  }
+
+  return res.sort((a, b) => a.element - b.element).map((e) => e.priority);
+};
