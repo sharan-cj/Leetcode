@@ -180,3 +180,26 @@ var maxSubsequence = function (nums, k) {
 
   return res.sort((a, b) => a.element - b.element).map((e) => e.priority);
 };
+
+// 2974. Minimum Number Game
+
+var numberGame = function (nums) {
+  const minHeap = new MinPriorityQueue();
+
+  for (let n of nums) {
+    minHeap.enqueue(n);
+  }
+
+  const arr = [];
+  while (minHeap.size() > 1) {
+    const alice = minHeap.dequeue().element;
+    const bob = minHeap.dequeue().element;
+    arr.push(bob);
+    arr.push(alice);
+  }
+
+  if (minHeap.size()) {
+    arr.push(minHeap.dequeue().element);
+  }
+  return arr;
+};
