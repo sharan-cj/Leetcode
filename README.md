@@ -9,6 +9,7 @@
 - L1464. Maximum Product of Two Elements in an Array
 - L2099. Find Subsequence of Length K With the Largest Sum
 - L2974. Minimum Number Game
+- L355. Design Twitter
 
 ### Trees
 

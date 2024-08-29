@@ -203,3 +203,78 @@ var numberGame = function (nums) {
   }
   return arr;
 };
+
+// 355. Design Twitter
+
+var Twitter = function () {
+  this.followers = {};
+  this.tweets = {};
+  this.tweetCount = 0;
+};
+
+/**
+ * @param {number} userId
+ * @param {number} tweetId
+ * @return {void}
+ */
+Twitter.prototype.postTweet = function (userId, tweetId) {
+  this.tweetCount++;
+  if (!this.tweets[userId]) {
+    this.tweets[userId] = [];
+  }
+  this.tweets[userId].push({ tweetId, count: this.tweetCount });
+};
+
+/**
+ * @param {number} userId
+ * @return {number[]}
+ */
+Twitter.prototype.getNewsFeed = function (userId) {
+  const res = [];
+  const users = [...(this.followers?.[userId] ?? []), userId];
+
+  const maxHeap = new MaxPriorityQueue();
+
+  for (let user of users) {
+    for (let tweet of this.tweets?.[user] ?? []) {
+      maxHeap.enqueue(tweet.tweetId, tweet.count);
+    }
+  }
+
+  while (maxHeap.size() && res.length < 10) {
+    res.push(maxHeap.dequeue().element);
+  }
+
+  return res;
+};
+
+/**
+ * @param {number} followerId
+ * @param {number} followeeId
+ * @return {void}
+ */
+Twitter.prototype.follow = function (followerId, followeeId) {
+  if (this.followers[followerId]) {
+    this.followers[followerId].add(followeeId);
+  } else {
+    this.followers[followerId] = new Set([followeeId]);
+  }
+};
+
+/**
+ * @param {number} followerId
+ * @param {number} followeeId
+ * @return {void}
+ */
+Twitter.prototype.unfollow = function (followerId, followeeId) {
+  this.followers[followerId]?.delete(followeeId);
+};
+
+/**
+ * Your Twitter object will be instantiated and called as such:
+ * var obj = new Twitter()
+ * obj.postTweet(userId,tweetId)
+ * var param_2 = obj.getNewsFeed(userId)
+ * obj.follow(followerId,followeeId)
+ * obj.unfollow(followerId,followeeId)
+ */
