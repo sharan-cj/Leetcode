@@ -10,6 +10,7 @@
 - L2099. Find Subsequence of Length K With the Largest Sum
 - L2974. Minimum Number Game
 - L355. Design Twitter
+- L295. Find Median from Data Stream
 
 ### Trees
 

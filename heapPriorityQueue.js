@@ -278,3 +278,53 @@ Twitter.prototype.unfollow = function (followerId, followeeId) {
  * obj.follow(followerId,followeeId)
  * obj.unfollow(followerId,followeeId)
  */
+
+// 295. Find Median from Data Stream
+
+var MedianFinder = function () {
+  this.smallNums = new MaxPriorityQueue();
+  this.largeNums = new MinPriorityQueue();
+};
+
+/**
+ * @param {number} num
+ * @return {void}
+ */
+MedianFinder.prototype.addNum = function (num) {
+  this.smallNums.enqueue(num);
+
+  if (
+    this.largeNums.size() &&
+    this.smallNums.front().element > this.largeNums.front().element
+  ) {
+    this.largeNums.enqueue(this.smallNums.dequeue().element);
+  }
+
+  if (this.smallNums.size() > this.largeNums.size() + 1) {
+    this.largeNums.enqueue(this.smallNums.dequeue().element);
+  }
+
+  if (this.largeNums.size() > this.smallNums.size() + 1) {
+    this.smallNums.enqueue(this.largeNums.dequeue().element);
+  }
+};
+
+/**
+ * @return {number}
+ */
+MedianFinder.prototype.findMedian = function () {
+  if (this.largeNums.size() > this.smallNums.size()) {
+    return this.largeNums.front().element;
+  }
+  if (this.largeNums.size() < this.smallNums.size()) {
+    return this.smallNums.front().element;
+  }
+  return (this.smallNums.front().element + this.largeNums.front().element) / 2;
+};
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * var obj = new MedianFinder()
+ * obj.addNum(num)
+ * var param_2 = obj.findMedian()
+ */
