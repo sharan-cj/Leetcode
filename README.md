@@ -1,6 +1,7 @@
 ### Intervals
 
 - L57. Insert Interval
+- L56. Merge Intervals
 
 ### Heap / Priority Queue
 

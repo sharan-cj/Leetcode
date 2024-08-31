@@ -19,3 +19,22 @@ var insert = function (intervals, newInterval) {
   res.push(newInterval);
   return res;
 };
+
+// 56. Merge Intervals
+
+var merge = function (intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+
+  const res = [];
+
+  for (let i of intervals) {
+    if (res.length && res[res.length - 1][1] >= i[0]) {
+      const [start, end] = res.pop();
+      res.push([start, Math.max(end, i[1])]);
+    } else {
+      res.push(i);
+    }
+  }
+
+  return res;
+};
