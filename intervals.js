@@ -1,57 +1,78 @@
-// 57. Insert Interval
+// 252. Meeting Rooms: Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
 
-var insert = function (intervals, newInterval) {
-  const res = [];
-
-  for (let i in intervals) {
-    if (newInterval[1] < intervals[i][0]) {
-      return [...res, newInterval, ...intervals.slice(i)];
-    }
-    if (newInterval[0] > intervals[i][1]) {
-      res.push(intervals[i]);
-    } else {
-      newInterval = [
-        Math.min(newInterval[0], intervals[i][0]),
-        Math.max(newInterval[1], intervals[i][1]),
-      ];
+const meetingRooms = (meetings) => {
+  meetings.sort((a, b) => a[0] - b[0]);
+  for (let i = 0; i < meetings.length - 1; i++) {
+    if (meetings[i][1] > meetings[i + 1][0]) {
+      return false;
     }
   }
-  res.push(newInterval);
-  return res;
+  return true;
 };
 
-// 56. Merge Intervals
+console.log(
+  meetingRooms([
+    [0, 30],
+    [5, 10],
+    [15, 20],
+  ])
+);
+console.log(meetingRooms([[7, 10], [(2, 4)]]));
 
-var merge = function (intervals) {
-  intervals.sort((a, b) => a[0] - b[0]);
+// // 57. Insert Interval
 
-  const res = [];
+// var insert = function (intervals, newInterval) {
+//   const res = [];
 
-  for (let i of intervals) {
-    if (res.length && res[res.length - 1][1] >= i[0]) {
-      const [start, end] = res.pop();
-      res.push([start, Math.max(end, i[1])]);
-    } else {
-      res.push(i);
-    }
-  }
+//   for (let i in intervals) {
+//     if (newInterval[1] < intervals[i][0]) {
+//       return [...res, newInterval, ...intervals.slice(i)];
+//     }
+//     if (newInterval[0] > intervals[i][1]) {
+//       res.push(intervals[i]);
+//     } else {
+//       newInterval = [
+//         Math.min(newInterval[0], intervals[i][0]),
+//         Math.max(newInterval[1], intervals[i][1]),
+//       ];
+//     }
+//   }
+//   res.push(newInterval);
+//   return res;
+// };
 
-  return res;
-};
+// // 56. Merge Intervals
 
-// 435. Non-overlapping Intervals
+// var merge = function (intervals) {
+//   intervals.sort((a, b) => a[0] - b[0]);
 
-var eraseOverlapIntervals = function (intervals) {
-  intervals.sort((a, b) => a[0] - b[0]);
-  let res = 0;
-  let prevEnd = intervals[0][1];
-  for (let i = 1; i < intervals.length; i++) {
-    if (intervals[i][0] < prevEnd) {
-      prevEnd = Math.min(intervals[i][1], prevEnd);
-      res++;
-    } else {
-      prevEnd = intervals[i][1];
-    }
-  }
-  return res;
-};
+//   const res = [];
+
+//   for (let i of intervals) {
+//     if (res.length && res[res.length - 1][1] >= i[0]) {
+//       const [start, end] = res.pop();
+//       res.push([start, Math.max(end, i[1])]);
+//     } else {
+//       res.push(i);
+//     }
+//   }
+
+//   return res;
+// };
+
+// // 435. Non-overlapping Intervals
+
+// var eraseOverlapIntervals = function (intervals) {
+//   intervals.sort((a, b) => a[0] - b[0]);
+//   let res = 0;
+//   let prevEnd = intervals[0][1];
+//   for (let i = 1; i < intervals.length; i++) {
+//     if (intervals[i][0] < prevEnd) {
+//       prevEnd = Math.min(intervals[i][1], prevEnd);
+//       res++;
+//     } else {
+//       prevEnd = intervals[i][1];
+//     }
+//   }
+//   return res;
+// };

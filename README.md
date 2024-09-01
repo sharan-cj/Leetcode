@@ -3,6 +3,7 @@
 - L57. Insert Interval
 - L56. Merge Intervals
 - L435. Non-overlapping Intervals
+- L252. Meeting Rooms
 
 ### Heap / Priority Queue
 
