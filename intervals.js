@@ -1,23 +1,69 @@
-// 252. Meeting Rooms: Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
+// 253. Meeting Rooms II: Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
 
-const meetingRooms = (meetings) => {
-  meetings.sort((a, b) => a[0] - b[0]);
-  for (let i = 0; i < meetings.length - 1; i++) {
-    if (meetings[i][1] > meetings[i + 1][0]) {
-      return false;
+const numOfMeetingRooms = (intervals) => {
+  const startArr = [];
+  const endArr = [];
+
+  intervals.forEach(([s, e]) => {
+    startArr.push(s);
+    endArr.push(e);
+  });
+
+  startArr.sort((a, b) => a - b);
+  endArr.sort((a, b) => a - b);
+
+  let s = 0;
+  let e = 0;
+  let res = 0;
+  let count = 0;
+  while (s < intervals.length) {
+    if (startArr[s] < endArr[e]) {
+      s++;
+      count++;
+    } else {
+      e++;
+      count--;
     }
+    res = Math.max(res, count);
   }
-  return true;
+
+  return res;
 };
 
 console.log(
-  meetingRooms([
+  numOfMeetingRooms([
     [0, 30],
     [5, 10],
     [15, 20],
   ])
 );
-console.log(meetingRooms([[7, 10], [(2, 4)]]));
+console.log(
+  numOfMeetingRooms([
+    [7, 10],
+    [2, 4],
+  ])
+);
+
+// // 252. Meeting Rooms: Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
+
+// const meetingRooms = (meetings) => {
+//   meetings.sort((a, b) => a[0] - b[0]);
+//   for (let i = 0; i < meetings.length - 1; i++) {
+//     if (meetings[i][1] > meetings[i + 1][0]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
+
+// console.log(
+//   meetingRooms([
+//     [0, 30],
+//     [5, 10],
+//     [15, 20],
+//   ])
+// );
+// console.log(meetingRooms([[7, 10], [(2, 4)]]));
 
 // // 57. Insert Interval
 

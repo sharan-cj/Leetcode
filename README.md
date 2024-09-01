@@ -4,6 +4,7 @@
 - L56. Merge Intervals
 - L435. Non-overlapping Intervals
 - L252. Meeting Rooms
+- L253. Meeting Rooms II
 
 ### Heap / Priority Queue
 
