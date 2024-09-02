@@ -5,6 +5,7 @@
 - L435. Non-overlapping Intervals
 - L252. Meeting Rooms
 - L253. Meeting Rooms II
+- L1851. Minimum Interval to Include Each Query
 
 ### Heap / Priority Queue
 

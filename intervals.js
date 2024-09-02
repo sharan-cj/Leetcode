@@ -1,3 +1,35 @@
+// 1851. Minimum Interval to Include Each Query
+
+var minInterval = function (intervals, queries) {
+  const qArr = [...queries].sort((a, b) => a - b);
+  intervals.sort((a, b) => {
+    if (a[0] !== b[0]) {
+      return a[0] - b[0];
+    }
+    return a[1] - b[1];
+  });
+
+  let i = 0;
+  let res = {};
+  const minHeap = new MinPriorityQueue();
+  for (let q of qArr) {
+    while (i < intervals.length && intervals[i][0] <= q) {
+      const [s, e] = intervals[i];
+      const priority = e - s + 1;
+      minHeap.enqueue(e, priority);
+      i++;
+    }
+
+    while (minHeap.size() && minHeap.front().element < q) {
+      minHeap.dequeue();
+    }
+
+    res[q] = minHeap.size() ? minHeap.front().priority : -1;
+  }
+
+  return queries.map((q) => res[q]);
+};
+
 // 253. Meeting Rooms II: Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
 
 const numOfMeetingRooms = (intervals) => {
