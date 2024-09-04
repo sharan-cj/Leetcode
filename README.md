@@ -1,6 +1,7 @@
 ### Tries
 
 - L208. Implement Trie (Prefix Tree)
+- L211. Design Add and Search Words Data Structure
 
 ### Intervals
 
