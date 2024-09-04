@@ -96,6 +96,10 @@
 - L27. Remove Element
 - L13. Roman to Integer
 
+### Medium
+
+- L79. Word Search
+
 ### Stack
 
 - L853. Car Fleet
