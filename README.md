@@ -97,9 +97,10 @@
 - L27. Remove Element
 - L13. Roman to Integer
 
-### Medium
+### Random - Medium
 
 - L79. Word Search
+- L2028. Find Missing Observations
 
 ### Stack
 

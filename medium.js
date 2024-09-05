@@ -42,3 +42,25 @@ var exist = function (board, word) {
   }
   return false;
 };
+
+// 2028. Find Missing Observations
+var missingRolls = function (rolls, mean, n) {
+  const rollsSum = rolls.reduce((a, c) => a + c);
+  const totalSum = mean * (n + rolls.length);
+  const missingSum = totalSum - rollsSum;
+
+  if (missingSum < n || missingSum > n * 6) {
+    return [];
+  }
+
+  let res = new Array(n).fill(1);
+  let sum = n;
+
+  for (let i = 0; i < n && sum < missingSum; i++) {
+    const increment = Math.min(6 - res[i], missingSum - sum);
+    res[i] += increment;
+    sum += increment;
+  }
+
+  return res;
+};
