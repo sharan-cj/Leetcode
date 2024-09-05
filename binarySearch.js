@@ -145,3 +145,17 @@ console.log(search([4, 5, 6, 7, 0, 1, 2], 0));
 // };
 
 // console.log(search([-1, 0, 3, 5, 9, 12], 9));
+
+// 101. Symmetric Tree
+var isSymmetric = function (root) {
+  const isMirrored = (n1, n2) => {
+    if (!n1 && !n2) return true;
+    if (!n1 || !n2) return false;
+    return (
+      n1.val === n2.val &&
+      isMirrored(n1.left, n2.right) &&
+      isMirrored(n2.left, n1.right)
+    );
+  };
+  return isMirrored(root, root);
+};

@@ -44,6 +44,7 @@
 - L543. Diameter of Binary Tree
 - L104. Maximum Depth of Binary Tree
 - L226. Invert Binary Tree
+- L101. Symmetric Tree
 
 ### Linked List
 
