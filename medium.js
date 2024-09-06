@@ -64,3 +64,20 @@ var missingRolls = function (rolls, mean, n) {
 
   return res;
 };
+
+// 3217. Delete Nodes From Linked List Present in Array
+var modifiedList = function (nums, head) {
+  const set = new Set(nums);
+  const dummy = new ListNode();
+  let prev = dummy;
+  let curr = head;
+  while (curr) {
+    if (!set.has(curr.val)) {
+      prev.next = curr;
+      prev = prev.next;
+    }
+    curr = curr.next;
+  }
+  prev.next = null;
+  return dummy.next;
+};
