@@ -81,3 +81,35 @@ var modifiedList = function (nums, head) {
   prev.next = null;
   return dummy.next;
 };
+
+// 725. Split Linked List in Parts
+var splitListToParts = function (head, k) {
+  let listLen = 0;
+  let currNode = head;
+  while (currNode) {
+    listLen++;
+    currNode = currNode.next;
+  }
+
+  const partLen = Math.floor(listLen / k);
+  const numOfExtras = listLen % k;
+
+  const res = [];
+  let node = head;
+  for (i = 0; i < k; i++) {
+    const dummy = new ListNode();
+    let curr = dummy;
+    const len = partLen + (i < numOfExtras ? 1 : 0);
+
+    for (let j = 0; j < len && node; j++) {
+      curr.next = node;
+      node = node.next;
+      curr = curr.next;
+    }
+
+    curr.next = null;
+    res.push(dummy.next);
+  }
+
+  return res;
+};

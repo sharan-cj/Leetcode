@@ -102,6 +102,7 @@
 - L79. Word Search
 - L2028. Find Missing Observations
 - L3217. Delete Nodes From Linked List Present in Array
+- L725. Split Linked List in Parts
 
 ### Stack
 
