@@ -113,3 +113,52 @@ var splitListToParts = function (head, k) {
 
   return res;
 };
+
+// 2326. Spiral Matrix IV
+
+var spiralMatrix = function (m, n, head) {
+  let top = 0;
+  let bottom = m - 1;
+  let left = 0;
+  let right = n - 1;
+  let matrix = [];
+
+  let node = head;
+  for (let i = 0; i < m; i++) {
+    matrix[i] = [];
+    for (let j = 0; j < n; j++) {
+      matrix[i][j] = -1;
+    }
+  }
+
+  while (node && top <= bottom && left <= right) {
+    // left to right
+    for (let i = left; i <= right && node; i++) {
+      matrix[top][i] = node.val;
+      node = node.next;
+    }
+    top++;
+
+    // top-right to bottom
+    for (let i = top; i <= bottom && node; i++) {
+      matrix[i][right] = node.val;
+      node = node.next;
+    }
+    right--;
+
+    // bottom-right to left
+    for (let i = right; i >= left && node; i--) {
+      matrix[bottom][i] = node.val;
+      node = node.next;
+    }
+    bottom--;
+
+    // left-bottom to top
+    for (let i = bottom; i >= top && node; i--) {
+      matrix[i][left] = node.val;
+      node = node.next;
+    }
+    left++;
+  }
+  return matrix;
+};

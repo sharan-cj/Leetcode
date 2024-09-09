@@ -103,6 +103,7 @@
 - L2028. Find Missing Observations
 - L3217. Delete Nodes From Linked List Present in Array
 - L725. Split Linked List in Parts
+- L2326. Spiral Matrix IV
 
 ### Stack
 
