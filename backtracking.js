@@ -18,3 +18,26 @@ var subsets = function (nums) {
   backtrack(0);
   return res;
 };
+
+// 39. Combination Sum
+
+var combinationSum = function (candidates, target) {
+  const res = [];
+  const group = [];
+
+  const backtrack = (i, total) => {
+    if (total === target) {
+      res.push([...group]);
+      return;
+    }
+    if (total > target || i === candidates.length) {
+      return;
+    }
+    group.push(candidates[i]);
+    backtrack(i, total + candidates[i]);
+    group.pop();
+    backtrack(i + 1, total);
+  };
+  backtrack(0, 0);
+  return res;
+};

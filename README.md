@@ -1,6 +1,7 @@
 ### Backtracking
 
 - L78. Subsets
+- L39. Combination Sum
 
 ### Tries
 
