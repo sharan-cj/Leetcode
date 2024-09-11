@@ -1,3 +1,14 @@
+// 2220. Minimum Bit Flips to Convert Number
+var minBitFlips = function (start, goal) {
+  let xor = start ^ goal;
+  let count = 0;
+  while (xor) {
+    count += xor & 1;
+    xor >>= 1;
+  }
+  return count;
+};
+
 // 171. Excel Sheet Column Number
 var titleToNumber = function (columnTitle) {
   const A = "A".charCodeAt(0) - 1;

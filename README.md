@@ -100,6 +100,7 @@
 - L70. Climbing Stairs
 - L27. Remove Element
 - L13. Roman to Integer
+- L2220. Minimum Bit Flips to Convert Number
 
 ### Random - Medium
 
