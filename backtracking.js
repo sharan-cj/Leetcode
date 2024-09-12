@@ -1,3 +1,27 @@
+// 90. Subsets II
+var subsetsWithDup = function (nums) {
+  nums.sort((a, b) => a - b);
+  const res = [];
+  const group = [];
+
+  const backtrack = (i) => {
+    if (i === nums.length) {
+      res.push([...group]);
+      return;
+    }
+    group.push(nums[i]);
+    backtrack(i + 1);
+    group.pop();
+    while (i + 1 < nums.length && nums[i] === nums[i + 1]) {
+      i++;
+    }
+    backtrack(i + 1);
+  };
+
+  backtrack(0);
+  return res;
+};
+
 // 78. Subsets
 
 var subsets = function (nums) {
