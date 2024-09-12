@@ -41,3 +41,28 @@ var combinationSum = function (candidates, target) {
   backtrack(0, 0);
   return res;
 };
+
+// 46. Permutations
+
+var permute = function (nums) {
+  const res = [];
+  const set = new Set();
+
+  const backtrack = () => {
+    if (set.size === nums.length) {
+      res.push([...set]);
+      return;
+    }
+
+    for (let n of nums) {
+      if (!set.has(n)) {
+        set.add(n);
+        backtrack();
+        set.delete(n);
+      }
+    }
+  };
+
+  backtrack();
+  return res;
+};

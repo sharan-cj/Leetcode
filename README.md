@@ -2,6 +2,7 @@
 
 - L78. Subsets
 - L39. Combination Sum
+- L46. Permutations
 
 ### Tries
 
