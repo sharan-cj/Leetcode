@@ -1,3 +1,18 @@
+// 1684. Count the Number of Consistent Strings
+var countConsistentStrings = function (allowed, words) {
+  const set = new Set(allowed);
+  let res = words.length;
+  for (let word of words) {
+    for (let c of word) {
+      if (!set.has(c)) {
+        res--;
+        break;
+      }
+    }
+  }
+  return res;
+};
+
 // 2220. Minimum Bit Flips to Convert Number
 var minBitFlips = function (start, goal) {
   let xor = start ^ goal;
