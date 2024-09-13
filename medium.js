@@ -1,3 +1,20 @@
+// 1310. XOR Queries of a Subarray
+
+var xorQueries = function (arr, queries) {
+  const res = [];
+
+  const prefixArr = [0];
+  for (let i = 0; i < arr.length; i++) {
+    prefixArr.push(prefixArr[i] ^ arr[i]);
+  }
+
+  for (let [s, e] of queries) {
+    res.push(prefixArr[s] ^ prefixArr[e + 1]);
+  }
+
+  return res;
+};
+
 // 79. Word Search
 
 var exist = function (board, word) {
