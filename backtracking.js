@@ -90,3 +90,31 @@ var permute = function (nums) {
   backtrack();
   return res;
 };
+
+// 40. Combination Sum II
+var combinationSum2 = function (candidates, target) {
+  const res = [];
+  candidates.sort((a, b) => a - b);
+  const group = [];
+  const backtrack = (i, sum) => {
+    if (sum === target) {
+      res.push([...group]);
+      return;
+    }
+    if (sum > target || i === candidates.length) {
+      return;
+    }
+
+    group.push(candidates[i]);
+    backtrack(i + 1, sum + candidates[i]);
+    group.pop();
+
+    while (i + 1 < candidates.length && candidates[i] === candidates[i + 1]) {
+      i++;
+    }
+    backtrack(i + 1, sum);
+  };
+
+  backtrack(0, 0);
+  return res;
+};
