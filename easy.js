@@ -1,3 +1,17 @@
+// 111. Minimum Depth of Binary Tree
+
+var minDepth = function (root) {
+  const dfs = (node) => {
+    if (!node) return 0;
+
+    if (!node.left) return dfs(node.right) + 1;
+    if (!node.right) return dfs(node.left) + 1;
+    return Math.min(dfs(node.left), dfs(node.right)) + 1;
+  };
+
+  return dfs(root);
+};
+
 // 1684. Count the Number of Consistent Strings
 var countConsistentStrings = function (allowed, words) {
   const set = new Set(allowed);
