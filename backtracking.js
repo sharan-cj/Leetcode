@@ -1,3 +1,35 @@
+// 131. Palindrome Partitioning
+
+var partition = function (s) {
+  const isPalindrome = (l, r) => {
+    while (l < r) {
+      if (s[l] !== s[r]) {
+        return false;
+      }
+      l++;
+      r--;
+    }
+    return true;
+  };
+  const res = [];
+  const sub = [];
+  const backtrack = (start) => {
+    if (start === s.length) {
+      res.push([...sub]);
+      return;
+    }
+    for (let end = start; end < s.length; end++) {
+      if (isPalindrome(start, end)) {
+        sub.push(s.slice(start, end + 1));
+        backtrack(end + 1);
+        sub.pop();
+      }
+    }
+  };
+  backtrack(0);
+  return res;
+};
+
 // 90. Subsets II
 var subsetsWithDup = function (nums) {
   nums.sort((a, b) => a - b);
