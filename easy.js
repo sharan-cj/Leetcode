@@ -1,3 +1,20 @@
+// 884. Uncommon Words from Two Sentences
+var uncommonFromSentences = function (s1, s2) {
+  const map = new Map();
+  for (let w of s1.split(" ")) {
+    const count = map.get(w) ?? 0;
+    map.set(w, count + 1);
+  }
+
+  for (let w of s2.split(" ")) {
+    const count = map.get(w) ?? 0;
+    map.set(w, count + 1);
+  }
+  const res = [];
+  map.forEach((v, k) => v === 1 && res.push(k));
+  return res;
+};
+
 // 111. Minimum Depth of Binary Tree
 
 var minDepth = function (root) {
