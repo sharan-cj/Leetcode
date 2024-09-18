@@ -1,3 +1,12 @@
+// 179. Largest Number
+
+var largestNumber = function (nums) {
+  const numStr = nums.map(String);
+  numStr.sort((a, b) => b + a - (a + b));
+  if (numStr[0] === "0") return "0";
+  return numStr.join("");
+};
+
 // 1310. XOR Queries of a Subarray
 
 var xorQueries = function (arr, queries) {
