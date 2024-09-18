@@ -1,5 +1,6 @@
 ### Backtracking
 
+- L51. N-Queens
 - L78. Subsets
 - L39. Combination Sum
 - L46. Permutations

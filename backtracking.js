@@ -1,3 +1,50 @@
+// 51. N-Queens
+
+var solveNQueens = function (n) {
+  const nd = new Set();
+  const pd = new Set();
+  const cols = new Set();
+  const res = [];
+  const board = [];
+  for (let r = 0; r < n; r++) {
+    board[r] = [];
+    for (let c = 0; c < n; c++) {
+      board[r][c] = ".";
+    }
+  }
+
+  const backtrack = (r) => {
+    if (r === n) {
+      const sol = [];
+      for (let row of board) {
+        sol.push(row.join(""));
+      }
+      res.push(sol);
+      return;
+    }
+
+    for (let c = 0; c < n; c++) {
+      if (cols.has(c) || pd.has(r + c) || nd.has(r - c)) {
+        continue;
+      }
+
+      cols.add(c);
+      pd.add(r + c);
+      nd.add(r - c);
+      board[r][c] = "Q";
+
+      backtrack(r + 1);
+
+      cols.delete(c);
+      pd.delete(r + c);
+      nd.delete(r - c);
+      board[r][c] = ".";
+    }
+  };
+  backtrack(0);
+  return res;
+};
+
 // 17. Letter Combinations of a Phone Number
 
 var letterCombinations = function (digits) {
