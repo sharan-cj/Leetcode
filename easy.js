@@ -1,3 +1,16 @@
+// 108. Convert Sorted Array to Binary Search Tree
+var sortedArrayToBST = function (nums) {
+  const recursion = (l, r) => {
+    if (l > r) return null;
+    const mid = Math.floor((r + l) / 2);
+    const node = new TreeNode(nums[mid]);
+    node.left = recursion(l, mid - 1);
+    node.right = recursion(mid + 1, r);
+    return node;
+  };
+  return recursion(0, nums.length - 1);
+};
+
 // 884. Uncommon Words from Two Sentences
 var uncommonFromSentences = function (s1, s2) {
   const map = new Map();

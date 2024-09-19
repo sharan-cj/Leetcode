@@ -92,6 +92,7 @@
 
 ### Random - EASY
 
+- L108. Convert Sorted Array to Binary Search Tree
 - L884. Uncommon Words from Two Sentences
 - L171. ExceLSheet Column Number
 - L258. Add Digits
