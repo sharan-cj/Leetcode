@@ -1,6 +1,7 @@
 ### Dynamic Programming
 
 - L746. Min Cost Climbing Stairs
+- L198. House Robber
 
 ### Backtracking
 

@@ -1,5 +1,4 @@
 // 746. Min Cost Climbing Stairs
-
 var minCostClimbingStairs = function (cost) {
   const n = cost.length + 1;
   const dp = new Array(n);
@@ -11,4 +10,16 @@ var minCostClimbingStairs = function (cost) {
   }
 
   return dp[n - 1];
+};
+
+// 198. House Robber
+var rob = function (nums) {
+  let beforePrev = 0;
+  let prev = 0;
+  for (let i = 0; i < nums.length; i++) {
+    const curr = Math.max(beforePrev + nums[i], prev);
+    beforePrev = prev;
+    prev = curr;
+  }
+  return prev;
 };
