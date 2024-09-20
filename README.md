@@ -1,3 +1,7 @@
+### Dynamic Programming
+
+- L746. Min Cost Climbing Stairs
+
 ### Backtracking
 
 - L51. N-Queens
