@@ -1,3 +1,26 @@
+// 5. Longest Palindromic Substring
+
+var longestPalindrome = (str) => {
+  let longest = "";
+  const checkPalindrome = (l, r) => {
+    while (l >= 0 && r < str.length && str[l] === str[r]) {
+      const curr = str.slice(l, r + 1);
+      if (curr.length > longest.length) {
+        longest = curr;
+      }
+      r++;
+      l--;
+    }
+  };
+
+  for (let i = 0; i < str.length; i++) {
+    checkPalindrome(i, i);
+    checkPalindrome(i, i + 1);
+  }
+
+  return longest;
+};
+
 // 213. House Robber II
 
 var rob = function (nums) {
