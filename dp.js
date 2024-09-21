@@ -1,3 +1,21 @@
+// 647. Palindromic Substrings
+
+var countSubstrings = function (s) {
+  let res = 0;
+  const checkPalindrome = (l, r) => {
+    while (l >= 0 && r < s.length && s[l] === s[r]) {
+      res++;
+      l--;
+      r++;
+    }
+  };
+  for (let i = 0; i < s.length; i++) {
+    checkPalindrome(i, i);
+    checkPalindrome(i, i + 1);
+  }
+  return res;
+};
+
 // 5. Longest Palindromic Substring
 
 var longestPalindrome = (str) => {
