@@ -1,3 +1,25 @@
+// 386. Lexicographical Numbers
+
+var lexicalOrder = function (n) {
+  const res = [];
+
+  const dfs = (curr) => {
+    if (curr > n) return;
+    res.push(curr);
+
+    for (let i = 0; i < 10; i++) {
+      let nxt = curr * 10 + i;
+      if (nxt > n) break;
+      dfs(nxt);
+    }
+  };
+
+  for (let i = 1; i < 10; i++) {
+    dfs(i);
+  }
+  return res;
+};
+
 // 179. Largest Number
 
 var largestNumber = function (nums) {

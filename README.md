@@ -120,6 +120,7 @@
 
 ### Random - Medium
 
+- L386. Lexicographical Numbers
 - L79. Word Search
 - L2028. Find Missing Observations
 - L3217. Delete Nodes From Linked List Present in Array
