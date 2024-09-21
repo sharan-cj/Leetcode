@@ -1,3 +1,23 @@
+// 213. House Robber II
+
+var rob = function (nums) {
+  if (nums.length < 2) {
+    return Math.max(nums[0], nums[1] ?? 0);
+  }
+  const iterate = (start, end) => {
+    let lastPrev = 0;
+    let prev = 0;
+    for (let i = start; i < end; i++) {
+      let curr = Math.max(lastPrev + nums[i], prev);
+      lastPrev = prev;
+      prev = curr;
+    }
+    return prev;
+  };
+  const res = Math.max(iterate(1, nums.length), iterate(0, nums.length - 1));
+  return res;
+};
+
 // 746. Min Cost Climbing Stairs
 var minCostClimbingStairs = function (cost) {
   const n = cost.length + 1;
