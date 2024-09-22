@@ -1,3 +1,22 @@
+// 322. Coin Change TOP_DOWN
+var coinChange = function (coins, amount) {
+  coins.sort((a, b) => a - b);
+  const memo = new Map().set(0, 0);
+  const helper = (amt) => {
+    if (memo.has(amt)) return memo.get(amt);
+    let res = Infinity;
+    for (let c of coins) {
+      const diff = amt - c;
+      if (diff < 0) break;
+      res = Math.min(res, 1 + helper(diff));
+    }
+    memo.set(amt, res);
+    return res;
+  };
+  const res = helper(amount);
+  return res === Infinity ? -1 : res;
+};
+
 // 91. Decode Ways
 
 var numDecodings = function (s) {
