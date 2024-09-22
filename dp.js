@@ -1,3 +1,17 @@
+// 152. Maximum Product Subarray
+var maxProduct = function (nums) {
+  let max = 1;
+  let min = 1;
+  let res = nums[0];
+  for (let n of nums) {
+    const temp = max;
+    max = Math.max(n * max, n * min, n);
+    min = Math.min(temp * n, n * min, n);
+    res = Math.max(res, max);
+  }
+  return res;
+};
+
 // 322. Coin Change BOTTOM_UP
 var coinChange = function (coins, amount) {
   coins.sort((a, b) => a - b);
