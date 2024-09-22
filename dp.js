@@ -1,3 +1,20 @@
+// 322. Coin Change BOTTOM_UP
+var coinChange = function (coins, amount) {
+  coins.sort((a, b) => a - b);
+  const dp = new Array(amount + 1).fill(0);
+  for (let i = 1; i <= amount; i++) {
+    let res = Infinity;
+    for (let c of coins) {
+      const diff = i - c;
+      if (diff < 0) break;
+      res = Math.min(res, dp[diff] + 1);
+    }
+    dp[i] = res;
+  }
+
+  return dp[amount] === Infinity ? -1 : dp[amount];
+};
+
 // 322. Coin Change TOP_DOWN
 var coinChange = function (coins, amount) {
   coins.sort((a, b) => a - b);
