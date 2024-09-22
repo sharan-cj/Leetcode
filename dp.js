@@ -1,3 +1,27 @@
+// 91. Decode Ways
+
+var numDecodings = function (s) {
+  if (s[0] === "0") return 0;
+  let lastPrev = 1;
+  let prev = 1;
+
+  for (let i = 1; i < s.length; i++) {
+    const oneDigit = Number(s[i]);
+    const twoDigit = Number(s[i - 1] + s[i]);
+
+    let curr = 0;
+    if (oneDigit !== 0) {
+      curr = prev;
+    }
+    if (twoDigit <= 26 && twoDigit > 9) {
+      curr += lastPrev;
+    }
+    lastPrev = prev;
+    prev = curr;
+  }
+  return prev;
+};
+
 // 647. Palindromic Substrings
 
 var countSubstrings = function (s) {
