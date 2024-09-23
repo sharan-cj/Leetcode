@@ -1,3 +1,23 @@
+// 139. Word Break
+
+var wordBreak = function (s, wordDict) {
+  const memo = new Map();
+  const helper = (str) => {
+    if (str === "") return true;
+    if (memo.has(str)) return memo.get(str);
+    for (let w of wordDict) {
+      if (w === str.slice(0, w.length) && helper(str.slice(w.length))) {
+        memo.set(str, true);
+        return true;
+      }
+    }
+    memo.set(str, false);
+    return false;
+  };
+
+  return helper(s);
+};
+
 // 152. Maximum Product Subarray
 var maxProduct = function (nums) {
   let max = 1;

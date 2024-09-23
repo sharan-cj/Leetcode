@@ -1,5 +1,6 @@
 ### Dynamic Programming
 
+- L139. Word Break
 - L152. Maximum Product Subarray
 - L322. Coin Change
 - L91. Decode Ways
