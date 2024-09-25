@@ -1,5 +1,6 @@
 ### Dynamic Programming
 
+- L300. Longest Increasing Subsequence
 - L139. Word Break
 - L152. Maximum Product Subarray
 - L322. Coin Change
