@@ -1,3 +1,23 @@
+// 416. Partition Equal Subset Sum
+
+var canPartition = function (nums) {
+  const total = nums.reduce((a, c) => a + c);
+  if (total % 2) return false;
+  const target = total / 2;
+  let set = new Set([0]);
+  for (let n of nums) {
+    const newSet = new Set();
+    for (let v of set) {
+      const sum = n + v;
+      if (sum === target) return true;
+      newSet.add(sum);
+      newSet.add(v);
+    }
+    set = newSet;
+  }
+  return false;
+};
+
 // 300. Longest Increasing Subsequence
 
 var lengthOfLIS = function (nums) {
