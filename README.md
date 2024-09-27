@@ -1,3 +1,7 @@
+### Graphs
+
+- L200. Number of Islands
+
 ### Dynamic Programming
 
 - L416. Partition Equal Subset Sum
