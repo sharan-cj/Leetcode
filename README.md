@@ -1,5 +1,6 @@
 ### Graphs
 
+- L695. Max Area of Island
 - L200. Number of Islands
 
 ### Dynamic Programming
