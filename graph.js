@@ -1,3 +1,20 @@
+// 133. Clone Graph
+
+var cloneGraph = function (node) {
+  if (!node) return null;
+  const map = new Map();
+  const dfs = (node) => {
+    if (map.has(node)) return map.get(node);
+    const newNode = new _Node(node.val);
+    map.set(node, newNode);
+    for (let n of node.neighbors) {
+      newNode.neighbors.push(dfs(n));
+    }
+    return newNode;
+  };
+  return dfs(node);
+};
+
 // 695. Max Area of Island
 
 var maxAreaOfIsland = function (grid) {
