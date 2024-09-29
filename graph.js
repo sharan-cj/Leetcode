@@ -1,3 +1,40 @@
+// 994. Rotting Oranges
+
+var orangesRotting = function (grid) {
+  const rows = grid.length;
+  const cols = grid[0].length;
+  const q = [];
+  let fresh = 0;
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      if (grid[i][j] === 2) {
+        q.push([i, j]);
+      } else if (grid[i][j] === 1) {
+        fresh++;
+      }
+    }
+  }
+  let time = 0;
+  const markRotten = (i, j) => {
+    if (i < 0 || i >= rows || j >= cols || j < 0 || grid[i][j] !== 1) return;
+    grid[i][j] = 2;
+    q.push([i, j]);
+    fresh--;
+  };
+  while (q.length && fresh > 0) {
+    const len = q.length;
+    for (let index = 0; index < len; index++) {
+      const [i, j] = q.shift();
+      markRotten(i, j + 1);
+      markRotten(i, j - 1);
+      markRotten(i + 1, j);
+      markRotten(i - 1, j);
+    }
+    time++;
+  }
+  return fresh ? -1 : time;
+};
+
 // 133. Clone Graph
 
 var cloneGraph = function (node) {
