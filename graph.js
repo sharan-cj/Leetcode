@@ -1,3 +1,51 @@
+// 417. Pacific Atlantic Water Flow
+
+var pacificAtlantic = function (heights) {
+  const rows = heights.length;
+  const cols = heights[0].length;
+
+  const p = new Set();
+  const a = new Set();
+
+  const dfs = (r, c, prevHeight, set) => {
+    if (
+      r < 0 ||
+      r >= rows ||
+      c >= cols ||
+      c < 0 ||
+      set.has(`${r},${c}`) ||
+      prevHeight > heights[r][c]
+    )
+      return;
+    set.add(`${r},${c}`);
+    dfs(r + 1, c, heights[r][c], set);
+    dfs(r - 1, c, heights[r][c], set);
+    dfs(r, c - 1, heights[r][c], set);
+    dfs(r, c + 1, heights[r][c], set);
+  };
+
+  for (let r = 0; r < rows; r++) {
+    dfs(r, 0, heights[r][0], p);
+    dfs(r, cols - 1, heights[r][cols - 1], a);
+  }
+
+  for (let c = 0; c < cols; c++) {
+    dfs(0, c, heights[0][c], p);
+    dfs(rows - 1, c, heights[rows - 1][c], a);
+  }
+
+  const res = [];
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const i = `${r},${c}`;
+      if (p.has(i) && a.has(i)) {
+        res.push([r, c]);
+      }
+    }
+  }
+  return res;
+};
+
 // 994. Rotting Oranges
 
 var orangesRotting = function (grid) {
