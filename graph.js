@@ -1,3 +1,36 @@
+// 130. Surrounded Regions
+var solve = function (board) {
+  const rows = board.length;
+  const cols = board[0].length;
+
+  const dfs = (i, j) => {
+    if (i < 0 || j < 0 || i >= rows || j >= cols || board[i][j] !== "O") return;
+    board[i][j] = "T";
+    dfs(i + 1, j);
+    dfs(i - 1, j);
+    dfs(i, j - 1);
+    dfs(i, j + 1);
+  };
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if ([0, rows - 1].includes(r) || [0, cols - 1].includes(c)) {
+        dfs(r, c);
+      }
+    }
+  }
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (board[r][c] === "O") {
+        board[r][c] = "X";
+      }
+      if (board[r][c] === "T") {
+        board[r][c] = "O";
+      }
+    }
+  }
+};
 // 417. Pacific Atlantic Water Flow
 
 var pacificAtlantic = function (heights) {
