@@ -1,3 +1,36 @@
+// 207. Course Schedule
+var canFinish = function (numCourses, prerequisites) {
+  const pr = new Map();
+
+  for (let c = 0; c < numCourses; c++) {
+    pr.set(c, []);
+  }
+  for (let [c, p] of prerequisites) {
+    pr.set(c, [...pr.get(c), p]);
+  }
+
+  const visited = new Set();
+
+  const dfs = (cur) => {
+    if (visited.has(cur)) return false;
+    if (!pr.get(cur).length) return true;
+    visited.add(cur);
+    for (let n of pr.get(cur)) {
+      if (!dfs(n)) {
+        return false;
+      }
+    }
+    visited.delete(cur);
+    pr.set(cur, []);
+    return true;
+  };
+
+  for (let c = 0; c < numCourses; c++) {
+    if (!dfs(c)) return false;
+  }
+  return true;
+};
+
 // 130. Surrounded Regions
 var solve = function (board) {
   const rows = board.length;
