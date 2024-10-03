@@ -1,3 +1,37 @@
+var findOrder = function (numCourses, prerequisites) {
+  const pr = new Map();
+
+  for (let i = 0; i < numCourses; i++) {
+    pr.set(i, []);
+  }
+
+  for (let [c, p] of prerequisites) {
+    pr.set(c, [...pr.get(c), p]);
+  }
+
+  const visited = new Set();
+  const cycle = new Set();
+  const output = [];
+  const dfs = (cur) => {
+    if (cycle.has(cur)) return false;
+    if (visited.has(cur)) return true;
+
+    cycle.add(cur);
+    for (let p of pr.get(cur)) {
+      if (!dfs(p)) return false;
+    }
+    cycle.delete(cur);
+    visited.add(cur);
+    output.push(cur);
+    return true;
+  };
+
+  for (let i = 0; i < numCourses; i++) {
+    if (!dfs(i)) return [];
+  }
+  return output;
+};
+
 // 207. Course Schedule
 var canFinish = function (numCourses, prerequisites) {
   const pr = new Map();
