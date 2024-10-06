@@ -1,3 +1,5 @@
+// Course Schedule II
+
 var findOrder = function (numCourses, prerequisites) {
   const pr = new Map();
 
@@ -253,4 +255,33 @@ var numIslands = function (grid) {
   }
 
   return res;
+};
+
+// 684. Redundant Connection
+var findRedundantConnection = function (edges) {
+  const arr = new Array(edges.length + 1).fill(0).map((_, i) => i);
+
+  const findParent = (node) => {
+    while (arr[node] !== node) {
+      node = arr[node];
+    }
+    return node;
+  };
+
+  const union = (n1, n2) => {
+    const pn1 = findParent(n1);
+    const pn2 = findParent(n2);
+
+    if (pn1 !== pn2) {
+      arr[pn1] = pn2;
+      return true;
+    }
+    return false;
+  };
+
+  for (let [e1, e2] of edges) {
+    if (!union(e1, e2)) {
+      return [e1, e2];
+    }
+  }
 };
