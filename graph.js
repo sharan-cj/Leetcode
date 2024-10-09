@@ -285,3 +285,46 @@ var findRedundantConnection = function (edges) {
     }
   }
 };
+
+var ladderLength = function (beginWord, endWord, wordList) {
+  if (!wordList.includes(endWord)) return 0;
+
+  const patterns = new Map();
+  wordList.push(beginWord);
+  for (let word of wordList) {
+    for (let c = 0; c < word.length; c++) {
+      pattern = word.slice(0, c) + "*" + word.slice(c + 1);
+      const words = patterns.get(pattern) || [];
+      words.push(word);
+      patterns.set(pattern, words);
+    }
+  }
+
+  const visited = new Set();
+  let res = 0;
+  let q = [beginWord];
+
+  while (q.length) {
+    const len = q.length;
+    res++;
+    for (let i = 0; i < len; i++) {
+      const word = q.shift();
+
+      if (word === endWord) {
+        return res;
+      }
+      for (let c = 0; c < word.length; c++) {
+        pattern = word.slice(0, c) + "*" + word.slice(c + 1);
+
+        for (let w of patterns.get(pattern)) {
+          if (!visited.has(w)) {
+            visited.add(w);
+            q.push(w);
+          }
+        }
+      }
+    }
+  }
+
+  return 0;
+};
